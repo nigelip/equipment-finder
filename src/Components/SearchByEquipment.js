@@ -7,8 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 let results = [];
 
-const Search = () => {
-  // const [resultsList, setresultsList] = useState([]);
+const SearchByEquipment = () => {
   const [equipment, setEquipment] = useState([]);
   const [targetEquipment, setTargetEquipment] = useState("");
   const navigate = useNavigate();
@@ -27,6 +26,7 @@ const Search = () => {
     results = [];
     for (var i = 0; i < equipment.length; i++) {
       if (equipment[i].name == targetEquipment) {
+        //dynamic variable here:name
         results.push(equipment[i]);
       }
     }
@@ -39,7 +39,7 @@ const Search = () => {
     message.success(
       "Search successful! Redirecting to search results page...",
       1.5,
-      () => navigate("/searchresults")
+      () => navigate("/searchequipmentresults")
     );
   };
 
@@ -81,6 +81,6 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default SearchByEquipment;
 
 export { results };

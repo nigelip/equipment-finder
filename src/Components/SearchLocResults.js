@@ -1,8 +1,8 @@
 import { React, useState } from "react";
-import { results } from "./Search";
+import { results } from "./SearchByLoc";
 import { List, Modal, Button } from "antd";
 
-const SearchResults = () => {
+const SearchLocResults = () => {
   const [position, setPosition] = useState("bottom");
   const [align, setAlign] = useState("center");
   const [currentEquipment, setcurrentEquipment] = useState(results[0]);
@@ -34,7 +34,7 @@ const SearchResults = () => {
                   {target.name}
                 </Button>
               }
-              description={target.location}
+              description={target.target}
             />
           </List.Item>
         )}
@@ -43,4 +43,4 @@ const SearchResults = () => {
   );
 };
 
-export default SearchResults;
+export default SearchLocResults;
