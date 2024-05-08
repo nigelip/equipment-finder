@@ -7,6 +7,7 @@ import SearchByLoc from "./Components/SearchByLoc.js";
 import SearchLocResults from "./Components/SearchLocResults.js";
 import NavBar from "./Components/NavBar.js";
 import Home from "./Components/Home.js";
+import AppFooter from "./Components/Footer.js";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/searchgymresults" element={<SearchLocResults />} />
           <Route path="/DBEditor" element={<DBEditor />} />
         </Routes>
+        <AppFooter />
       </div>
     </Router>
   );

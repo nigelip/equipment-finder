@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, Select } from "antd";
+import { Button, Form, AutoComplete } from "antd";
 import { db } from "../firebase";
 import { collection, onSnapshot, addDoc } from "firebase/firestore";
 
@@ -95,7 +95,7 @@ const DBEditor = () => {
   });
   const targetOptions = [];
   targetOption.forEach((item) => {
-    targetOptions.push({ value: item, label: item.toUpperCase() });
+    targetOptions.push({ value: item });
   });
 
   return (
@@ -105,6 +105,7 @@ const DBEditor = () => {
       variant="filled"
       style={{
         maxWidth: 600,
+        position: "center",
       }}
       onFinish={handleSubmit}
       //   onFinishFailed={console.log("failed to update")}
@@ -120,10 +121,11 @@ const DBEditor = () => {
           },
         ]}
       >
-        <Select
+        <AutoComplete
           showSearch
+          allowClear
           placeholder="Select equipment"
-          //   optionFilterProp="children"
+          // optionFilterProp="children"
           onChange={(e) => setName(e)}
           filterOption={filterOption}
           options={nameOptions}
@@ -142,8 +144,9 @@ const DBEditor = () => {
           },
         ]}
       >
-        <Select
+        <AutoComplete
           showSearch
+          allowClear
           placeholder="Select brand"
           //   optionFilterProp="children"
           onChange={(e) => setBrand(e)}
@@ -164,8 +167,9 @@ const DBEditor = () => {
           },
         ]}
       >
-        <Select
+        <AutoComplete
           showSearch
+          allowClear
           placeholder="Select location"
           //   optionFilterProp="children"
           onChange={(e) => setLocation(e)}
@@ -184,8 +188,9 @@ const DBEditor = () => {
           },
         ]}
       >
-        <Select
+        <AutoComplete
           showSearch
+          allowClear
           placeholder="Select target muscle"
           //   optionFilterProp="children"
           onChange={(e) => setTarget(e)}
@@ -204,20 +209,25 @@ const DBEditor = () => {
           },
         ]}
       >
-        <Select
+        <AutoComplete
           showSearch
+          allowClear
           placeholder="Select type"
-          //   optionFilterProp="children"
+          // optionFilterProp="children"
           onChange={(e) => setType(e)}
           filterOption={filterOption}
           options={[
             {
-              value: "cable",
+              value: "Cable",
               label: "Cable",
             },
             {
-              value: "plate loaded",
+              value: "Plate Loaded",
               label: "Plate Loaded",
+            },
+            {
+              value: "Selectorized",
+              label: "Selectorized",
             },
           ]}
         />

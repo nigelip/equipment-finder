@@ -23,8 +23,9 @@ const SearchLocResults = () => {
         pagination={{
           position,
           align,
-          defaultPageSize: 5,
+          // defaultPageSize: 5,
         }}
+        bordered
         dataSource={results}
         renderItem={(target) => (
           <List.Item>
@@ -39,6 +40,23 @@ const SearchLocResults = () => {
           </List.Item>
         )}
       />
+      <Modal
+        open={open}
+        title={currentEquipment.name}
+        onOk={handleOk}
+        onCancel={handleOk}
+        footer={
+          <Button key="OK" onClick={handleOk}>
+            OK
+          </Button>
+        }
+      >
+        <p>Location: {currentEquipment.location}</p>
+        <p>Target Muscle: {currentEquipment.target}</p>
+        <p>Brand: {currentEquipment.brand}</p>
+        <p>Type: {currentEquipment.type}</p>
+        {/* <p>{MapBox{currentEquipment.lat,{currentEquipment.lng,{currentEquipment.Street)}</p> */}
+      </Modal>
     </>
   );
 };

@@ -39,6 +39,23 @@ const SearchEquipmentResults = () => {
           </List.Item>
         )}
       />
+      <Modal
+        open={open}
+        title={currentEquipment.name}
+        onOk={handleOk}
+        onCancel={handleOk}
+        footer={
+          <Button key="OK" onClick={handleOk}>
+            OK
+          </Button>
+        }
+      >
+        <p>Location: {currentEquipment.location}</p>
+        <p>Target Muscle: {currentEquipment.target}</p>
+        <p>Brand: {currentEquipment.brand}</p>
+        <p>Type: {currentEquipment.type}</p>
+        {/* <p>{MapBox{currentEquipment.lat,{currentEquipment.lng,{currentEquipment.Street)}</p> */}
+      </Modal>
     </>
   );
 };

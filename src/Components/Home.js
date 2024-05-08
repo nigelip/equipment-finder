@@ -3,10 +3,6 @@ const Home = () => {
     <div className="home">
       <h1>Welcome to the AF guide!</h1>
       <p>
-        This is a passion project made for AF members who love exploring the
-        many AF gyms islandwide.
-      </p>
-      <p>
         Ever had an equipment you wanted to use that was not available at your
         home gym?
       </p>
