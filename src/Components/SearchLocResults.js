@@ -2,7 +2,8 @@ import { React, useState } from "react";
 import { results } from "./SearchByLoc";
 import { List, Modal, Button } from "antd";
 
-const SearchLocResults = () => {
+const SearchLocResults = (props) => {
+  // const results = props.results;
   const [position, setPosition] = useState("bottom");
   const [align, setAlign] = useState("center");
   const [currentEquipment, setcurrentEquipment] = useState(results[0]);
@@ -18,12 +19,15 @@ const SearchLocResults = () => {
   };
 
   return (
-    <>
+    <div className="resultBox">
       <List
+        style={{
+          width: "50%",
+        }}
         pagination={{
           position,
           align,
-          // defaultPageSize: 5,
+          defaultPageSize: 6,
         }}
         bordered
         dataSource={results}
@@ -51,13 +55,21 @@ const SearchLocResults = () => {
           </Button>
         }
       >
-        <p>Location: {currentEquipment.location}</p>
-        <p>Target Muscle: {currentEquipment.target}</p>
-        <p>Brand: {currentEquipment.brand}</p>
-        <p>Type: {currentEquipment.type}</p>
+        <p>
+          Location: <b>{currentEquipment.location}</b>
+        </p>
+        <p>
+          Target Muscle: <b>{currentEquipment.target}</b>
+        </p>
+        <p>
+          Brand: <b>{currentEquipment.brand}</b>
+        </p>
+        <p>
+          Type: <b>{currentEquipment.type}</b>
+        </p>
         {/* <p>{MapBox{currentEquipment.lat,{currentEquipment.lng,{currentEquipment.Street)}</p> */}
       </Modal>
-    </>
+    </div>
   );
 };
 

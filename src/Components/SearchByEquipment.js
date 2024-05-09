@@ -25,7 +25,7 @@ const SearchByEquipment = () => {
   const handleSearch = () => {
     results = [];
     for (var i = 0; i < equipment.length; i++) {
-      if (equipment[i].name == targetEquipment) {
+      if (equipment[i].name === targetEquipment) {
         //dynamic variable here:name
         results.push(equipment[i]);
       }
@@ -33,7 +33,7 @@ const SearchByEquipment = () => {
     // setresultsList(results);
     if (results.length === 0) {
       message.error("No results found. Please try again.", 2);
-      return navigate("/");
+      return navigate("/searchequipment");
     }
 
     message.success(

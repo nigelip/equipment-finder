@@ -5,7 +5,7 @@ import {
   getFirestore,
   addDoc,
 } from "firebase/firestore";
-import { useRef } from "react";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAvUNjYiQdZxk42YS7BHaBcaQNK2W33BLA",
@@ -17,14 +17,16 @@ const firebaseConfig = {
 };
 
 //init firebase app
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 //init services
-const db = getFirestore();
+const db = getFirestore(app);
 
 //collection ref
 const colRef = collection(db, "equipment");
 
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 //real time collection data
 const equipment = [];
 onSnapshot(colRef, (snapshot) => {
@@ -33,29 +35,5 @@ onSnapshot(colRef, (snapshot) => {
   });
   console.log(equipment);
 });
-// const option = new Set([]);
-// equipment.forEach((item) => {
-//   option.add(item["name"]);
-// });
-// const equipmentType = [];
-// option.forEach((item) => {
-//   equipmentType.push({ value: item });
-// });
 
-// adding equipment
-// const addEquipmentForm = document.querySelector(".add");
-// const addEquipmentForm = useRef(".add");
-// addEquipmentForm.addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   addDoc(colRef, {
-//     name: addEquipmentForm.name.value,
-//     brand: addEquipmentForm.brand.value,
-//     location: addEquipmentForm.location.value,
-//     target: addEquipmentForm.target.value,
-//     type: addEquipmentForm.type.value,
-//   }).then(() => {
-//     addEquipmentForm.reset();
-//   });
-// });
-
-export { db, colRef };
+export { db, colRef, auth, provider };

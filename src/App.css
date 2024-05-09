@@ -73,10 +73,26 @@
   padding: 6px;
 }
 .navbar a:hover {
-  color: #f1356d;
+  background-color: #574999;
+  color: white;
 }
 .content {
   max-width: 600px;
   margin: 40px auto;
   padding: 20px;
+}
+
+.resultBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 90vh;
+  flex-direction: column;
 }

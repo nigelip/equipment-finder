@@ -6,15 +6,16 @@ const AppFooter = () => {
       <Footer
         style={{
           textAlign: "center",
-          backgroundColor: "white",
+          backgroundColor: "#574999",
           color: "black",
           fontSize: "16px",
           fontWeight: "bold",
+          position: "absolute",
           bottom: 0,
           width: "100%",
         }}
       >
-        This is a project made for AF members who love exploring the many AF
+        This is a project made for AF members who enjoy exploring the many AF
         gyms islandwide.
       </Footer>
     </div>

@@ -4,12 +4,14 @@ import { db } from "../firebase";
 import { SearchOutlined } from "@ant-design/icons";
 import { collection, onSnapshot } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import SearchLocResults from "./SearchLocResults.js";
 
 let results = [];
 
 const SearchByLoc = () => {
   const [equipment, setEquipment] = useState([]);
   const [targetLoc, setTargetLoc] = useState("");
+  const [displayResults, setDisplayResults] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,20 +27,21 @@ const SearchByLoc = () => {
   const handleSearch = () => {
     results = [];
     for (var i = 0; i < equipment.length; i++) {
-      if (equipment[i].location == targetLoc) {
+      if (equipment[i].location === targetLoc) {
         results.push(equipment[i]);
       }
     }
     // setresultsList(results);
     if (results.length === 0) {
       message.error("No results found. Please try again.", 2);
-      return navigate("/");
+      return navigate("/searchgym");
     }
 
     message.success(
       "Search successful! Redirecting to search results page...",
       1.5,
       () => navigate("/searchgymresults")
+      // setDisplayResults(true)
     );
   };
 
@@ -76,6 +79,7 @@ const SearchByLoc = () => {
           onClick={handleSearch}
         />
       </div>
+      {/* {displayResults && <SearchLocResults results={results} />} */}
     </>
   );
 };

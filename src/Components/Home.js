@@ -8,7 +8,7 @@ const Home = () => {
       </p>
       <p>
         With this site, you can finally find out which gyms carry the equipment
-        you have been eyeing for!
+        you have been eyeing!
       </p>
     </div>
   );
