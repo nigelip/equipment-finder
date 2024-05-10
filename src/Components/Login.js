@@ -1,23 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { auth, provider } from "../firebase";
 import { signInWithPopup } from "firebase/auth";
+import { UserAuth } from "../context/AuthContext";
+import { GoogleButton } from "react-google-button";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  //   const [value, setValue] = useState("");
-  //   const handleClick = () => {
-  //     signInWithPopup(auth, provider).then((data) => {
-  //       setValue(data.user.email);
-  //       localStorage.setItem("email", data.user.email);
-  //     });
-  //   };
-  //   useEffect(() => {
-  //     setValue(localStorage.getItem("email"));
-  //   });
-  //   return (
-  //     <div>
-  //       <button onClick={handleClick}>Sign In with Google</button>
-  //     </div>
-  //   );
+  const { googleSignIn, user } = UserAuth();
+  const navigate = useNavigate();
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (user != null) {
+      navigate("/dbEditor");
+    }
+  }, [user]);
+
+  return <GoogleButton onClick={handleGoogleSignIn} />;
 };
 
 export default Login;

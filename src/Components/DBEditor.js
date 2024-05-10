@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Form, AutoComplete } from "antd";
 import { db } from "../firebase";
 import { collection, onSnapshot, addDoc } from "firebase/firestore";
+import { UserAuth } from "../context/AuthContext";
 
 const filterOption = (input, option) =>
   (option?.value ?? "").toLowerCase().includes(input.toLowerCase());
@@ -33,6 +34,7 @@ const DBEditor = () => {
   const [type, setType] = useState("");
   const [equipment, setEquipment] = useState([]);
   const [form] = Form.useForm();
+  const { user } = UserAuth();
 
   useEffect(() => {
     const equipmentList = [];
@@ -99,151 +101,154 @@ const DBEditor = () => {
   });
 
   return (
-    <Form
-      form={form}
-      {...formItemLayout}
-      variant="filled"
-      style={{
-        maxWidth: 600,
-        position: "center",
-      }}
-      onFinish={handleSubmit}
-      //   onFinishFailed={console.log("failed to update")}
-    >
-      {/* Name input */}
-      <Form.Item
-        label="name"
-        name="name"
-        rules={[
-          {
-            required: true,
-            message: "Please input!",
-          },
-        ]}
+    <>
+      <h1>Welcome, {user?.displayName}</h1>
+      <Form
+        form={form}
+        {...formItemLayout}
+        variant="filled"
+        style={{
+          maxWidth: 600,
+          position: "center",
+        }}
+        onFinish={handleSubmit}
+        //   onFinishFailed={console.log("failed to update")}
       >
-        <AutoComplete
-          showSearch
-          allowClear
-          placeholder="Select equipment"
-          // optionFilterProp="children"
-          onChange={(e) => setName(e)}
-          filterOption={filterOption}
-          options={nameOptions}
-        />
-      </Form.Item>
-
-      {/* Brand input */}
-
-      <Form.Item
-        label="brand"
-        name="brand"
-        rules={[
-          {
-            required: true,
-            message: "Please input!",
-          },
-        ]}
-      >
-        <AutoComplete
-          showSearch
-          allowClear
-          placeholder="Select brand"
-          //   optionFilterProp="children"
-          onChange={(e) => setBrand(e)}
-          filterOption={filterOption}
-          options={brandOptions}
-        />
-      </Form.Item>
-
-      {/* location input */}
-
-      <Form.Item
-        label="location"
-        name="location"
-        rules={[
-          {
-            required: true,
-            message: "Please input!",
-          },
-        ]}
-      >
-        <AutoComplete
-          showSearch
-          allowClear
-          placeholder="Select location"
-          //   optionFilterProp="children"
-          onChange={(e) => setLocation(e)}
-          filterOption={filterOption}
-          options={locOptions}
-        />
-      </Form.Item>
-
-      <Form.Item
-        label="target"
-        name="target"
-        rules={[
-          {
-            required: true,
-            message: "Please input!",
-          },
-        ]}
-      >
-        <AutoComplete
-          showSearch
-          allowClear
-          placeholder="Select target muscle"
-          //   optionFilterProp="children"
-          onChange={(e) => setTarget(e)}
-          filterOption={filterOption}
-          options={targetOptions}
-        />
-      </Form.Item>
-
-      <Form.Item
-        label="type"
-        name="type"
-        rules={[
-          {
-            required: true,
-            message: "Please input!",
-          },
-        ]}
-      >
-        <AutoComplete
-          showSearch
-          allowClear
-          placeholder="Select type"
-          // optionFilterProp="children"
-          onChange={(e) => setType(e)}
-          filterOption={filterOption}
-          options={[
+        {/* Name input */}
+        <Form.Item
+          label="name"
+          name="name"
+          rules={[
             {
-              value: "Cable",
-              label: "Cable",
-            },
-            {
-              value: "Plate Loaded",
-              label: "Plate Loaded",
-            },
-            {
-              value: "Selectorized",
-              label: "Selectorized",
+              required: true,
+              message: "Please input!",
             },
           ]}
-        />
-      </Form.Item>
+        >
+          <AutoComplete
+            showSearch
+            allowClear
+            placeholder="Select equipment"
+            // optionFilterProp="children"
+            onChange={(e) => setName(e)}
+            filterOption={filterOption}
+            options={nameOptions}
+          />
+        </Form.Item>
 
-      <Form.Item
-        wrapperCol={{
-          offset: 6,
-          span: 16,
-        }}
-      >
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+        {/* Brand input */}
+
+        <Form.Item
+          label="brand"
+          name="brand"
+          rules={[
+            {
+              required: true,
+              message: "Please input!",
+            },
+          ]}
+        >
+          <AutoComplete
+            showSearch
+            allowClear
+            placeholder="Select brand"
+            //   optionFilterProp="children"
+            onChange={(e) => setBrand(e)}
+            filterOption={filterOption}
+            options={brandOptions}
+          />
+        </Form.Item>
+
+        {/* location input */}
+
+        <Form.Item
+          label="location"
+          name="location"
+          rules={[
+            {
+              required: true,
+              message: "Please input!",
+            },
+          ]}
+        >
+          <AutoComplete
+            showSearch
+            allowClear
+            placeholder="Select location"
+            //   optionFilterProp="children"
+            onChange={(e) => setLocation(e)}
+            filterOption={filterOption}
+            options={locOptions}
+          />
+        </Form.Item>
+
+        <Form.Item
+          label="target"
+          name="target"
+          rules={[
+            {
+              required: true,
+              message: "Please input!",
+            },
+          ]}
+        >
+          <AutoComplete
+            showSearch
+            allowClear
+            placeholder="Select target muscle"
+            //   optionFilterProp="children"
+            onChange={(e) => setTarget(e)}
+            filterOption={filterOption}
+            options={targetOptions}
+          />
+        </Form.Item>
+
+        <Form.Item
+          label="type"
+          name="type"
+          rules={[
+            {
+              required: true,
+              message: "Please input!",
+            },
+          ]}
+        >
+          <AutoComplete
+            showSearch
+            allowClear
+            placeholder="Select type"
+            // optionFilterProp="children"
+            onChange={(e) => setType(e)}
+            filterOption={filterOption}
+            options={[
+              {
+                value: "Cable",
+                label: "Cable",
+              },
+              {
+                value: "Plate Loaded",
+                label: "Plate Loaded",
+              },
+              {
+                value: "Selectorized",
+                label: "Selectorized",
+              },
+            ]}
+          />
+        </Form.Item>
+
+        <Form.Item
+          wrapperCol={{
+            offset: 6,
+            span: 16,
+          }}
+        >
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
+    </>
   );
 };
 

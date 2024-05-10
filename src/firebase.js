@@ -28,12 +28,12 @@ const colRef = collection(db, "equipment");
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 //real time collection data
-const equipment = [];
-onSnapshot(colRef, (snapshot) => {
-  snapshot.docs.forEach((doc) => {
-    equipment.push({ ...doc.data(), id: doc.id });
-  });
-  console.log(equipment);
-});
+// const equipment = [];
+// onSnapshot(colRef, (snapshot) => {
+//   snapshot.docs.forEach((doc) => {
+//     equipment.push({ ...doc.data(), id: doc.id });
+//   });
+//   console.log(equipment);
+// });
 
 export { db, colRef, auth, provider };
