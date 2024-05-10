@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { auth, provider } from "../firebase";
-import { signInWithPopup } from "firebase/auth";
+import React, { useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { GoogleButton } from "react-google-button";
 import { useNavigate } from "react-router-dom";
