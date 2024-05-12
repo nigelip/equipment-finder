@@ -1,13 +1,15 @@
-import { React, useState } from "react";
-import { results } from "./SearchByEquipment";
+import { React, useEffect, useState } from "react";
 import { List, Modal, Button } from "antd";
+import { db } from "../firebase";
+import { query, where, collection, onSnapshot } from "firebase/firestore";
 
 const SearchEquipmentResults = () => {
-  const [position, setPosition] = useState("bottom");
-  const [align, setAlign] = useState("center");
-  const [currentEquipment, setcurrentEquipment] = useState(results[0]);
+  const position = "bottom";
+  const align = "center";
+  const [currentEquipment, setcurrentEquipment] = useState([]);
   const [open, setOpen] = useState(false);
-
+  const [results, setResults] = useState([]);
+  const colRef = collection(db, "equipment");
   const showModal = (target) => {
     setcurrentEquipment(target);
     setOpen(true);
@@ -16,6 +18,23 @@ const SearchEquipmentResults = () => {
   const handleOk = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    const q = query(
+      colRef,
+      where("name", "==", sessionStorage.getItem("equipmentresult"))
+    );
+    const unsub = onSnapshot(q, (querySnapshot) => {
+      const items = [];
+      querySnapshot.forEach((doc) => {
+        items.push(doc.data());
+      });
+      setResults(items);
+    });
+    return () => {
+      unsub();
+    };
+  }, []);
 
   return (
     <div className="resultBox">
