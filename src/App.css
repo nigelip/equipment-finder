@@ -96,3 +96,12 @@
   min-height: 90vh;
   flex-direction: column;
 }
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 90vh;
+  flex-direction: column;
+}

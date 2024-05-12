@@ -21,7 +21,16 @@ const Login = () => {
     }
   }, [user]);
 
-  return <GoogleButton onClick={handleGoogleSignIn} />;
+  return (
+    <div className="login">
+      <h1>
+        Logging in is only for <u>authorised</u> members who want to add
+        equipment into the database
+      </h1>
+      <p>Rest of the features are available to use</p>
+      <GoogleButton onClick={handleGoogleSignIn} />
+    </div>
+  );
 };
 
 export default Login;
