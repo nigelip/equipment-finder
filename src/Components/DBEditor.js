@@ -4,6 +4,8 @@ import { db } from "../firebase";
 import { collection, onSnapshot, addDoc } from "firebase/firestore";
 import { UserAuth } from "../context/AuthContext";
 
+import { useNavigate } from "react-router-dom";
+
 const filterOption = (input, option) =>
   (option?.value ?? "").toLowerCase().includes(input.toLowerCase());
 
@@ -35,6 +37,7 @@ const DBEditor = () => {
   const [equipment, setEquipment] = useState([]);
   const [form] = Form.useForm();
   const { user } = UserAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const equipmentList = [];
@@ -48,20 +51,24 @@ const DBEditor = () => {
 
   const handleSubmit = () => {
     // e.preventDefault();
-    console.log(name);
-    console.log(brand);
-    console.log(location);
-    console.log(target);
-    console.log(type);
-    addDoc(collection(db, "equipment"), {
-      name: name,
-      brand: brand,
-      location: location,
-      target: target,
-      type: type,
-    }).then(() => {
-      form.resetFields();
-    });
+    // console.log(name);
+    // console.log(brand);
+    // console.log(location);
+    // console.log(target);
+    // console.log(type);
+    try {
+      addDoc(collection(db, "equipment"), {
+        name: name,
+        brand: brand,
+        location: location,
+        target: target,
+        type: type,
+      }).then(() => {
+        form.resetFields();
+      });
+    } catch (error) {
+      navigate("/");
+    }
   };
 
   const nameOption = new Set([]);
@@ -112,7 +119,7 @@ const DBEditor = () => {
           position: "center",
         }}
         onFinish={handleSubmit}
-        //   onFinishFailed={console.log("failed to update")}
+        // onFinishFailed={console.log("failed to update")}
       >
         {/* Name input */}
         <Form.Item

@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { auth, provider } from "../firebase";
-import { signInWithPopup } from "firebase/auth";
+import React, { useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { GoogleButton } from "react-google-button";
 import { useNavigate } from "react-router-dom";
@@ -23,7 +21,16 @@ const Login = () => {
     }
   }, [user]);
 
-  return <GoogleButton onClick={handleGoogleSignIn} />;
+  return (
+    <div className="login">
+      <h1>
+        Logging in is only for <u>authorised</u> members who want to add
+        equipment into the database
+      </h1>
+      <p>Rest of the features are available to use</p>
+      <GoogleButton onClick={handleGoogleSignIn} />
+    </div>
+  );
 };
 
 export default Login;

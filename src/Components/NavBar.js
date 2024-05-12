@@ -13,9 +13,11 @@ const NavBar = () => {
   };
   return (
     <nav className="navbar">
-      <h1>The AF Guide</h1>
+      <Link to="/">
+        <h1>The AF Guide</h1>
+      </Link>
       <div className="links">
-        <Link to="/">Home</Link>
+        {/* <Link to="/">Home</Link> */}
         <Link to="/searchequipment">Search Equipment</Link>
         <Link to="/searchgym">Search Gym</Link>
         {user?.displayName ? (

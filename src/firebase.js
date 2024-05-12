@@ -1,10 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {
-  collection,
-  onSnapshot,
-  getFirestore,
-  addDoc,
-} from "firebase/firestore";
+import { collection, getFirestore } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
