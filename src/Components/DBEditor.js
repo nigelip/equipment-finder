@@ -15,12 +15,12 @@ const formItemLayout = {
       span: 24,
     },
     sm: {
-      span: 6,
+      span: 8,
     },
   },
   wrapperCol: {
     xs: {
-      span: 24,
+      span: 16,
     },
     sm: {
       span: 14,
@@ -64,7 +64,7 @@ const DBEditor = () => {
         target: target,
         type: type,
       }).then(() => {
-        form.resetFields();
+        form.resetFields(["name", "brand", "target", "type"]);
       });
     } catch (error) {
       navigate("/");
@@ -108,19 +108,44 @@ const DBEditor = () => {
   });
 
   return (
-    <>
+    <div className="inventoryForm">
       <h1>Welcome, {user?.displayName}</h1>
+      <br />
+
       <Form
         form={form}
         {...formItemLayout}
         variant="filled"
         style={{
           maxWidth: 600,
+          width: 300,
           position: "center",
         }}
         onFinish={handleSubmit}
-        // onFinishFailed={console.log("failed to update")}
       >
+        {/* location input */}
+
+        <Form.Item
+          label="location"
+          name="location"
+          rules={[
+            {
+              required: true,
+              message: "Please input!",
+            },
+          ]}
+        >
+          <AutoComplete
+            showSearch
+            allowClear
+            placeholder="Select location"
+            //   optionFilterProp="children"
+            onChange={(e) => setLocation(e)}
+            filterOption={filterOption}
+            options={locOptions}
+          />
+        </Form.Item>
+
         {/* Name input */}
         <Form.Item
           label="name"
@@ -163,29 +188,6 @@ const DBEditor = () => {
             onChange={(e) => setBrand(e)}
             filterOption={filterOption}
             options={brandOptions}
-          />
-        </Form.Item>
-
-        {/* location input */}
-
-        <Form.Item
-          label="location"
-          name="location"
-          rules={[
-            {
-              required: true,
-              message: "Please input!",
-            },
-          ]}
-        >
-          <AutoComplete
-            showSearch
-            allowClear
-            placeholder="Select location"
-            //   optionFilterProp="children"
-            onChange={(e) => setLocation(e)}
-            filterOption={filterOption}
-            options={locOptions}
           />
         </Form.Item>
 
@@ -255,7 +257,7 @@ const DBEditor = () => {
           </Button>
         </Form.Item>
       </Form>
-    </>
+    </div>
   );
 };
 
