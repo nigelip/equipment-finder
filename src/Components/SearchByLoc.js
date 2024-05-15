@@ -70,31 +70,31 @@ const SearchByLoc = () => {
 
   return (
     <>
-      <div className="search">
-        <AutoComplete
-          style={{
-            width: 200,
-          }}
-          options={options}
-          placeholder="Search Gym"
-          filterOption={(inputValue, option) =>
-            option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
-          }
-          onChange={(value) => {
-            setTargetLoc(value);
-          }}
-          optionHeight={4}
-          size="large"
-        />
-        <Button
-          type="primary"
-          className="search-button"
-          size="large"
-          icon={<SearchOutlined />}
-          onClick={handleSearch}
-        />
-      </div>
-      {/* {displayResults && <SearchLocResults results={results} />} */}
+        <div className="search">
+            <AutoComplete
+            style={{
+                width: 200,
+            }}
+            options={options}
+            placeholder="Search Gym"
+            filterOption={(inputValue, option) =>
+                option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+            }
+            onChange={(value) => {
+                setTargetLoc(value);
+            }}
+            optionHeight={4}
+            size="large"
+            />
+            <Button
+            type="primary"
+            className="search-button"
+            size="large"
+            icon={<SearchOutlined />}
+            onClick={handleSearch}
+            />
+        </div>
+        {/* {displayResults && <SearchLocResults results={results} />} */}
     </>
   );
 };

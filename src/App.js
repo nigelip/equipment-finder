@@ -18,6 +18,7 @@ function App() {
       <div className="App">
         <AuthContextProvider>
           <NavBar />
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/loginPage" element={<Login />} />
@@ -37,6 +38,7 @@ function App() {
               }
             />
           </Routes>
+          
         </AuthContextProvider>
 
         <AppFooter />
