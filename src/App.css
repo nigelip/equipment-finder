@@ -47,6 +47,18 @@
   min-height: 100vh;
 }
 
+.search .search-button {
+    background-color:hsla(251, 35%, 44%, 0.812);
+    margin-left: 20px;
+    border-radius: 50%;
+
+}
+
+.search .search-button:hover {
+    background-color:hsla(251, 35%, 44%, 0.5);
+
+}
+
 * {
   margin: 0;
   font-family: "Quicksand";
