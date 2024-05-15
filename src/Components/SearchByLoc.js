@@ -88,6 +88,7 @@ const SearchByLoc = () => {
         />
         <Button
           type="primary"
+          className="search-button"
           size="large"
           icon={<SearchOutlined />}
           onClick={handleSearch}
