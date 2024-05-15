@@ -18,28 +18,30 @@ function App() {
       <div className="App">
         <AuthContextProvider>
           <NavBar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/loginPage" element={<Login />} />
-            <Route path="/searchequipment" element={<SearchByEquipment />} />
-            <Route
-              path="/searchequipmentresults"
-              element={<SearchEquipmentResults />}
-            />
-            <Route path="/searchgym" element={<SearchByLoc />} />
-            <Route path="/searchgymresults" element={<SearchLocResults />} />
-            <Route
-              path="/DBEditor"
-              element={
-                <Protected>
-                  <DBEditor />
-                </Protected>
-              }
-            />
-          </Routes>
+          <div className="content-wrap">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/loginPage" element={<Login />} />
+              <Route path="/searchequipment" element={<SearchByEquipment />} />
+              <Route
+                path="/searchequipmentresults"
+                element={<SearchEquipmentResults />}
+              />
+              <Route path="/searchgym" element={<SearchByLoc />} />
+              <Route path="/searchgymresults" element={<SearchLocResults />} />
+              <Route
+                path="/DBEditor"
+                element={
+                  <Protected>
+                    <DBEditor />
+                  </Protected>
+                }
+              />
+            </Routes>
+          </div>
         </AuthContextProvider>
 
-        <AppFooter />
+        <AppFooter className="appFooter" />
       </div>
     </Router>
   );

@@ -48,15 +48,13 @@
 }
 
 .search .search-button {
-    background-color:hsla(251, 35%, 44%, 0.812);
-    margin-left: 20px;
-    border-radius: 50%;
-
+  background-color: hsla(251, 35%, 44%, 0.812);
+  margin-left: 20px;
+  border-radius: 50%;
 }
 
 .search .search-button:hover {
-    background-color:hsla(251, 35%, 44%, 0.5);
-
+  background-color: hsla(251, 35%, 44%, 0.5);
 }
 
 * {
@@ -98,6 +96,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .home {
@@ -125,4 +124,19 @@
   text-align: center;
   min-height: 90vh;
   flex-direction: column;
+}
+
+.content-wrap {
+  padding-bottom: 2.5rem;
+}
+
+.appFooter {
+  text-align: center;
+  background-color: #574999;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
