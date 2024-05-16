@@ -36,9 +36,17 @@ const SearchEquipmentResults = () => {
     };
   }, []);
 
+  function replaceWPlus(name) {
+    var link =
+      "https://www.google.com/maps/embed/v1/place?key=AIzaSyDbEkkYmwdvllv3XCCnnUbmEWFnSccRzyk&q=Anytime+Fitness+";
+    var replaced = name?.split().join("+");
+    return link.concat(replaced);
+  }
+
   return (
     <div className="resultBox">
       <h1>Locations with {sessionStorage.getItem("equipmentresult")}</h1>
+      <br />
       <List
         bordered
         style={{ width: "50%" }}
@@ -53,10 +61,10 @@ const SearchEquipmentResults = () => {
             <List.Item.Meta
               title={
                 <Button type="link" onClick={() => showModal(target)}>
-                  {target.name}
+                  <h2>{target.location}</h2>
                 </Button>
               }
-              description={<b>{target.location}</b>}
+              description={target.name}
             />
           </List.Item>
         )}
@@ -66,11 +74,7 @@ const SearchEquipmentResults = () => {
         title={currentEquipment.name}
         onOk={handleOk}
         onCancel={handleOk}
-        footer={
-          <Button key="OK" onClick={handleOk}>
-            OK
-          </Button>
-        }
+        footer={null}
       >
         <p>
           Location: <b>{currentEquipment.location}</b>
@@ -84,7 +88,19 @@ const SearchEquipmentResults = () => {
         <p>
           Type: <b>{currentEquipment.type}</b>
         </p>
-        {/* <p>{MapBox{currentEquipment.lat,{currentEquipment.lng,{currentEquipment.Street)}</p> */}
+        <br />
+        <iframe
+          title="mapBox"
+          style={{
+            width: "auto",
+            height: "40vh",
+            style: "border:1",
+            loading: "lazy",
+          }}
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src={replaceWPlus(currentEquipment.location)}
+        ></iframe>
       </Modal>
     </div>
   );
