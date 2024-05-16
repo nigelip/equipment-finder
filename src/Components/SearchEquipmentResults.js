@@ -38,6 +38,7 @@ const SearchEquipmentResults = () => {
 
   return (
     <div className="resultBox">
+      <h1>Locations with {sessionStorage.getItem("equipmentresult")}</h1>
       <List
         bordered
         style={{ width: "50%" }}

@@ -7,7 +7,7 @@ const ResultBox = (props) => {
   return (
     <>
       {results.length !== 0 && (
-        <div>
+        <div className="resultBox">
           {" "}
           <h1>{title}</h1>
           <br />
@@ -17,11 +17,6 @@ const ResultBox = (props) => {
             style={{
               width: "50%",
             }}
-            // pagination={{
-            //   position,
-            //   align,
-            //   defaultPageSize: 6,
-            // }}
             bordered
             dataSource={results}
             renderItem={(target) => (

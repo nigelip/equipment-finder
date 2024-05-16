@@ -1,5 +1,4 @@
 import { React, useState, useEffect } from "react";
-import { List, Modal, Button } from "antd";
 import { db } from "../firebase";
 import { query, where, collection, onSnapshot } from "firebase/firestore";
 import ResultBox from "./ResultBox";
@@ -56,6 +55,10 @@ const SearchLocResults = () => {
 
   return (
     <div>
+      <h1 style={{ backgroundColor: "#574999", color: "white" }}>
+        {sessionStorage.getItem("locresult")}
+      </h1>
+      <br />
       <ResultBox title="Back" results={backResults} />
       <ResultBox title="Chest" results={chestResults} />
       <ResultBox title="Legs" results={legsResults} />
