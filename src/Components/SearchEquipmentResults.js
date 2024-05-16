@@ -56,7 +56,7 @@ const SearchEquipmentResults = () => {
                   {target.name}
                 </Button>
               }
-              description={target.location}
+              description={<b>{target.location}</b>}
             />
           </List.Item>
         )}
