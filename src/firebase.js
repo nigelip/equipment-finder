@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { collection, getFirestore } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAvUNjYiQdZxk42YS7BHaBcaQNK2W33BLA",
@@ -16,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 
 //init services
 const db = getFirestore(app);
-
+const storage = getStorage(app);
 //collection ref
 const colRef = collection(db, "equipment");
 
@@ -31,4 +32,4 @@ const provider = new GoogleAuthProvider();
 //   console.log(equipment);
 // });
 
-export { db, colRef, auth, provider };
+export { db, colRef, auth, provider, storage };
