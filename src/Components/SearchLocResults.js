@@ -4,6 +4,7 @@ import { query, where, collection, onSnapshot } from "firebase/firestore";
 import ResultBox from "./ResultBox";
 import { storage } from "../firebase";
 import { getDownloadURL, ref } from "firebase/storage";
+import { List } from "antd";
 
 const SearchLocResults = () => {
   const [backResults, setBackResults] = useState([]);
@@ -46,62 +47,112 @@ const SearchLocResults = () => {
       const shoulderspic = new Map();
       const corepic = new Map();
       querySnapshot.forEach((doc) => {
+        let mp = doc.data();
         if (doc.data().target === "Back") {
-          backItems.push(doc.data());
           getDownloadURL(
             ref(storage, doc.data().brand + " " + doc.data().name + ".png")
           ).then((url) => {
-            backpic.set(doc.data().name, url);
+            mp["url"] = url;
+            // console.log(mp);
           });
+          backItems.push(mp);
+          // getDownloadURL(
+          //   ref(storage, doc.data().brand + " " + doc.data().name + ".png")
+          // ).then((url) => {
+          //   backpic.set(doc.data().name, url);
+          // });
         } else if (doc.data().target === "Legs") {
-          legsItems.push(doc.data());
           getDownloadURL(
             ref(storage, doc.data().brand + " " + doc.data().name + ".png")
           ).then((url) => {
-            legspic.set(doc.data().name, url);
+            mp["url"] = url;
+            // console.log(mp);
           });
+          legsItems.push(mp);
+          // getDownloadURL(
+          //   ref(storage, doc.data().brand + " " + doc.data().name + ".png")
+          // ).then((url) => {
+          //   legspic.set(doc.data().name, url);
+          // });
         } else if (doc.data().target === "Chest") {
-          chestItems.push(doc.data());
+          // chestItems.push(doc.data());
+          // getDownloadURL(
+          //   ref(storage, doc.data().brand + " " + doc.data().name + ".png")
+          // ).then((url) => {
+          //   chestpic.set(doc.data().name, url);
+          // });
           getDownloadURL(
             ref(storage, doc.data().brand + " " + doc.data().name + ".png")
           ).then((url) => {
-            chestpic.set(doc.data().name, url);
+            mp["url"] = url;
+            // console.log(mp);
           });
+          chestItems.push(mp);
         } else if (doc.data().target === "Arms") {
-          armsItems.push(doc.data());
           getDownloadURL(
             ref(storage, doc.data().brand + " " + doc.data().name + ".png")
           ).then((url) => {
-            armspic.set(doc.data().name, url);
+            mp["url"] = url;
+            // console.log(mp);
           });
+          armsItems.push(mp);
+          // getDownloadURL(
+          //   ref(storage, doc.data().brand + " " + doc.data().name + ".png")
+          // ).then((url) => {
+          //   armspic.set(doc.data().name, url);
+          // });
         } else if (doc.data().target === "Glutes") {
-          glutesItems.push(doc.data());
           getDownloadURL(
             ref(storage, doc.data().brand + " " + doc.data().name + ".png")
           ).then((url) => {
-            glutespic.set(doc.data().name, url);
+            mp["url"] = url;
+            // console.log(mp);
           });
+          glutesItems.push(mp);
+          // getDownloadURL(
+          //   ref(storage, doc.data().brand + " " + doc.data().name + ".png")
+          // ).then((url) => {
+          //   glutespic.set(doc.data().name, url);
+          // });
         } else if (doc.data().target === "Multipurpose") {
-          multipurposeItems.push(doc.data());
           getDownloadURL(
             ref(storage, doc.data().brand + " " + doc.data().name + ".png")
           ).then((url) => {
-            multipurposepic.set(doc.data().name, url);
+            mp["url"] = url;
+            // console.log(mp);
           });
+          multipurposeItems.push(mp);
+          // getDownloadURL(
+          //   ref(storage, doc.data().brand + " " + doc.data().name + ".png")
+          // ).then((url) => {
+          //   multipurposepic.set(doc.data().name, url);
+          // });
         } else if (doc.data().target === "Shoulders") {
-          shouldersItems.push(doc.data());
           getDownloadURL(
             ref(storage, doc.data().brand + " " + doc.data().name + ".png")
           ).then((url) => {
-            shoulderspic.set(doc.data().name, url);
+            mp["url"] = url;
+            // console.log(mp);
           });
+          shouldersItems.push(mp);
+          // getDownloadURL(
+          //   ref(storage, doc.data().brand + " " + doc.data().name + ".png")
+          // ).then((url) => {
+          //   shoulderspic.set(doc.data().name, url);
+          // });
         } else if (doc.data().target === "Core") {
-          coreItems.push(doc.data());
           getDownloadURL(
             ref(storage, doc.data().brand + " " + doc.data().name + ".png")
           ).then((url) => {
-            corepic.set(doc.data().name, url);
+            mp["url"] = url;
+            // console.log(mp);
           });
+          coreItems.push(mp);
+          // getDownloadURL(
+          //   ref(storage, doc.data().brand + " " + doc.data().name + ".png")
+          // ).then((url) => {
+          //   corepic.set(doc.data().name, url);
+          // });
         }
       });
       setBackResults(backItems);
@@ -112,15 +163,15 @@ const SearchLocResults = () => {
       setMultipurposeResults(multipurposeItems);
       setShouldersResults(shouldersItems);
       setCoreResults(coreItems);
-      setBackPics(backpic);
-      setLegsPics(legspic);
-      setChestPics(chestpic);
-      setArmsPics(armspic);
-      setGlutesPics(glutespic);
-      setMultipurposePics(multipurposepic);
-      setShouldersPics(shoulderspic);
-      setCorePics(corepic);
-      console.log(backpic);
+      // setBackPics(backpic);
+      // setLegsPics(legspic);
+      // setChestPics(chestpic);
+      // setArmsPics(armspic);
+      // setGlutesPics(glutespic);
+      // setMultipurposePics(multipurposepic);
+      // setShouldersPics(shoulderspic);
+      // setCorePics(corepic);
+      // console.log(backpic);
     });
     return () => {
       unsub();
@@ -142,11 +193,11 @@ const SearchLocResults = () => {
       <ResultBox title="Shoulders" results={backResults} />
       <ResultBox title="Core" results={backResults} /> */}
 
-      <ResultBox title="Back" results={backResults} pic={backPics} />
-      <ResultBox title="Chest" results={chestResults} pic={chestPics} />
-      <ResultBox title="Legs" results={legsResults} pic={legsPics} />
-      <ResultBox title="Arms" results={armsResults} pic={armsPics} />
-      <ResultBox title="Glutes" results={glutesResults} pic={glutesPics} />
+      <ResultBox title="Back" results={backResults} />
+      <ResultBox title="Chest" results={chestResults} />
+      <ResultBox title="Legs" results={legsResults} />
+      <ResultBox title="Arms" results={armsResults} />
+      <ResultBox title="Glutes" results={glutesResults} />
       <ResultBox
         title="Multipurpose"
         results={multipurposeResults}
