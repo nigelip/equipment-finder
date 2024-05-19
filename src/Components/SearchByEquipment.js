@@ -69,7 +69,9 @@ const SearchByEquipment = () => {
     <>
     <div className="search-box">
             <AutoComplete
-            className="custom-autocomplete"
+            style={{
+                width: 350,
+            }}
             options={options}
             placeholder="Search Equipment"
             filterOption={(inputValue, option) =>

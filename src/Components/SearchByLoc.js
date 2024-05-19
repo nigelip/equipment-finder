@@ -70,10 +70,10 @@ const SearchByLoc = () => {
 
   return (
     <>
-        <div className="search">
+        <div className="search-box">
             <AutoComplete
             style={{
-                width: 200,
+                width: 350,
             }}
             options={options}
             placeholder="Search Gym"
