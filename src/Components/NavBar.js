@@ -17,7 +17,7 @@ const NavBar = () => {
         <h1>The AF Guide</h1>
       </Link>
       <div className="links">
-        {/* <Link to="/">Home</Link> */}
+        {user && <Link to="/dbEditor">Add equipment</Link>}
         <Link to="/searchequipment">Search Equipment</Link>
         <Link to="/searchgym">Search Gym</Link>
         {user?.displayName ? (
