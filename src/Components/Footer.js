@@ -2,7 +2,7 @@ import { Footer } from "antd/es/layout/layout";
 
 const AppFooter = () => {
   return (
-    <Footer>
+    <Footer className="appFooter">
       This is a project made for AF members who enjoy exploring the many AF gyms
       islandwide.
     </Footer>

@@ -69,9 +69,12 @@ const SearchByLoc = () => {
   return (
     <>
       <div className="search">
+      <p className="text-search">Find a Gym</p>
+      <div className="search-container">
         <AutoComplete
+        className="custom-search-bar"
           style={{
-            width: 200,
+            width: 300,
           }}
           options={options}
           placeholder="Search Gym"
@@ -88,9 +91,11 @@ const SearchByLoc = () => {
           type="primary"
           className="search-button"
           size="large"
-          icon={<SearchOutlined />}
+          icon={<SearchOutlined className="search-icon" />}
           onClick={handleSearch}
         />
+      </div>
+        
       </div>
       {/* {displayResults && <SearchLocResults results={results} />} */}
     </>
