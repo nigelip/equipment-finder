@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.search .search-button {
+  background-color: hsla(251, 35%, 44%, 0.812);
+  margin-left: 20px;
+  border-radius: 50%;
+}
+
+.search .search-button:hover {
+  background-color: hsla(251, 35%, 44%, 0.5);
+}
+
+* {
+  margin: 0;
+  font-family: "Quicksand";
+  color: #333;
+}
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
+}
+.navbar h1 {
+  background-color: #574999;
+  color: white;
+}
+.navbar .links {
+  margin-left: auto;
+}
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+}
+.navbar a:hover {
+  background-color: #574999;
+  color: white;
+}
+.content {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.resultBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 90vh;
+  flex-direction: column;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 90vh;
+  flex-direction: column;
+}
+
+.inventoryForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 90vh;
+  flex-direction: column;
+}
+
+.content-wrap {
+  padding-bottom: 2.5rem;
+}
+
+.appFooter {
+  text-align: center;
+  background-color: #574999;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

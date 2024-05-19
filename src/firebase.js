@@ -21,10 +21,6 @@ const storage = getStorage(app);
 //collection ref
 const colRef = collection(db, "equipment");
 
-//init storage
-const storage  = getStorage();
-
-
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 //real time collection data
