@@ -1,9 +1,12 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { List, Modal, Button } from "antd";
+import { storage } from "../firebase";
+import { getDownloadURL, ref } from "firebase/storage";
+
 const ResultBox = (props) => {
   const title = props.title;
   const results = props.results;
-
+  console.log(results);
   return (
     <>
       {results.length !== 0 && (
@@ -23,11 +26,14 @@ const ResultBox = (props) => {
               <List.Item
                 extra={
                   <img
-                    width={272}
+                    className="eimg"
+                    width={200}
+                    // src={target?.url}
                     alt="logo"
-                    // src="https://www.precorhomefitness.com/cdn/shop/files/precor-resolute-series-biceps-curl-rsl0204-254396_5000x.jpg?v=1712890829"
-                    // src={target["name"].concat(".jpg")}
-                    src={`../img/${target.brand.concat(" ", target.name)}.png`}
+                    // src={`../img/${target.brand.concat(" ", target.name)}.png`}
+                    // src={`${pic?.get(target.name)}`} // the question mark here "helps" the pic appear but not all the time
+                    // the question mark here "helps" the pic appear but not all the time
+                    src="https://firebasestorage.googleapis.com/v0/b/equipment-finder-bcec5.appspot.com/o/Life%20Fitness%20Chest-Supported%20Row.png?alt=media&token=c6a28b26-ddb1-4d79-8d04-72f16da875d2"
                   />
                 }
               >

@@ -67,32 +67,30 @@ const SearchByEquipment = () => {
 
   return (
     <>
-    <div className="search-box">
-            <AutoComplete
-            style={{
-                width: 350,
-            }}
-            options={options}
-            placeholder="Search Equipment"
-            filterOption={(inputValue, option) =>
-                option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
-            }
-            onChange={(value) => {
-                setTargetEquipment(value);
-            }}
-            optionHeight={4}
-            size="large"
-            />
-
-            <Button
-            type="primary"
-            className="search-button"
-            size="large"
-            icon={<SearchOutlined />}
-            onClick={handleSearch}
-            />
-    </div>
-      
+      <div className="search">
+        <AutoComplete
+          style={{
+            width: 200,
+          }}
+          options={options}
+          placeholder="Search Equipment"
+          filterOption={(inputValue, option) =>
+            option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+          }
+          onChange={(value) => {
+            setTargetEquipment(value);
+          }}
+          optionHeight={4}
+          size="large"
+        />
+        <Button
+          type="primary"
+          className="search-button"
+          size="large"
+          icon={<SearchOutlined />}
+          onClick={handleSearch}
+        />
+      </div>
     </>
   );
 };
