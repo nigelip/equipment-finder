@@ -20,7 +20,7 @@ const ResultBox = (props) => {
             );
             return { ...item, url };
           } catch (error) {
-            console.error(`Failed to fetch URL for ${item.name}:`, error);
+            console.error(Failed to fetch URL for ${item.name}:, error);
             return { ...item, url: "https://via.placeholder.com/200" }; // Fallback URL
           }
         })
@@ -29,7 +29,7 @@ const ResultBox = (props) => {
     };
 
     fetchUrls();
-  }, [results]); // Re-run if `results` change
+  }, [results]); // Re-run if results change
   return (
     <>
       {fetchedResults.length !== 0 && (
