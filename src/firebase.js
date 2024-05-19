@@ -17,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 
 //init services
 const db = getFirestore(app);
-
+const storage = getStorage(app);
 //collection ref
 const colRef = collection(db, "equipment");
 

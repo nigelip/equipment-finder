@@ -1,18 +1,13 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import { List, Modal, Button } from "antd";
-import { storage } from "../firebase"
-import { ref, getDownloadURL } from "firebase/storage";
-
 const ResultBox = (props) => {
   const title = props.title;
   const results = props.results;
-  // const photourl = props.photourl;
-    
 
   return (
     <>
       {results.length !== 0 && (
-        <div>
+        <div className="resultBox">
           {" "}
           <h1>{title}</h1>
           <br />
@@ -22,11 +17,6 @@ const ResultBox = (props) => {
             style={{
               width: "50%",
             }}
-            // pagination={{
-            //   position,
-            //   align,
-            //   defaultPageSize: 6,
-            // }}
             bordered
             dataSource={results}
             renderItem={(target) => (
@@ -36,7 +26,8 @@ const ResultBox = (props) => {
                     width={272}
                     alt="logo"
                     // src="https://www.precorhomefitness.com/cdn/shop/files/precor-resolute-series-biceps-curl-rsl0204-254396_5000x.jpg?v=1712890829"
-                    
+                    // src={target["name"].concat(".jpg")}
+                    src={`../img/${target.brand.concat(" ", target.name)}.png`}
                   />
                 }
               >

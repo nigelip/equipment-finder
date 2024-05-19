@@ -5,8 +5,6 @@ import { SearchOutlined } from "@ant-design/icons";
 import { collection, onSnapshot } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
-let results = [];
-
 const SearchByLoc = () => {
   const [equipment, setEquipment] = useState([]);
   const [targetLoc, setTargetLoc] = useState("");
@@ -100,5 +98,3 @@ const SearchByLoc = () => {
 };
 
 export default SearchByLoc;
-
-export { results };
