@@ -57,8 +57,8 @@ const ResultBox = (props) => {
                 }
               >
                 <List.Item.Meta
-                  title={target.name}
-                  description={<p>{[target.brand, target.type]}</p>}
+                  title={<h2>{target.name}</h2>}
+                  description={<h3>{target.brand}</h3>}
                 />
               </List.Item>
             )}
