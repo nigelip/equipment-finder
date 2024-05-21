@@ -1,7 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 
+html {
+    scroll-behavior: smooth;
+    height: 100vh;
+}
+
 .App {
   text-align: center;
+  overflow-x: hidden;
+  overflow-y:inherit;
 }
 
 .App-logo {
@@ -39,53 +46,127 @@
   }
 }
 
+.content-wrap {
+    display: block;
+    background-color: #58499964;
+    /* height:90vh; */
+  }
+
+
 .search {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: 100vh;
+  height: 90vh;
+  /* background-color: #58499922; */
+  flex-direction: column;
 }
 
-.search .search-button {
-  background-color: hsla(251, 35%, 44%, 0.812);
-  margin-left: 20px;
-  border-radius: 50%;
+.text-search {
+    font-size: 40px;
+    margin-bottom: 30px;
 }
 
-.search .search-button:hover {
-  background-color: hsla(251, 35%, 44%, 0.5);
+.search-container {
+    width: 350px;
+    background-color: hsla(0, 0%, 100%, 0.838);
+    height: 50px;
+    border-radius: 30px;
 }
+
+.custom-search-bar .ant-select-selector {
+    background-color: transparent !important; /* Change to your desired background color */
+    border: none !important;
+    border-radius: 30px !important;
+    font-size: 20px !important;
+    outline: none !important;
+    height:40px !important;
+    margin-top: 5px !important;
+    margin-left: 5px !important;
+  }
+
+
+  /* IDK why cant remove the blue border when focus */
+  .custom-search-bar .ant-select-selector:hover, 
+  .custom-search-bar .ant-select-selector:active, 
+  .custom-search-bar .ant-select-selector:focus {
+    border-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
+  .custom-search-bar .ant-select-selection-search-input {
+    font-size: 20px !important;
+  }
+
+.search-button {
+    background-color: transparent;
+    border: none !important;
+    box-shadow: none;
+    transition: 0.3ms;
+}
+
+.search-button:hover {
+    background-color: hsla(0, 0%, 83%, 0.611) !important;
+    border-radius: 50%;
+}
+
+.search-button:active {
+    background-color: hsla(0, 0%, 83%, 0.932) !important;
+    border-radius: 50%;
+}
+
+.search .search-icon {
+    color: white;
+}
+
 
 * {
   margin: 0;
   font-family: "Quicksand";
   color: #333;
 }
+
+
 .navbar {
   padding: 20px;
   display: flex;
   align-items: center;
-  max-width: 800px;
+  max-width: 100%;
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
+  top: 0;
+  height: 6vh;
+  background-color: #584999;
+  /* background-color: white; */
 }
 .navbar h1 {
-  background-color: #574999;
+  background-color: transparent;
   color: white;
+  padding: 10px;
+  border-radius: 5px;
 }
 .navbar .links {
   margin-left: auto;
 }
 .navbar a {
   margin-left: 16px;
+  margin-right: 16px;
   text-decoration: none;
   padding: 6px;
-}
-.navbar a:hover {
-  background-color: #574999;
+  transition: 0.3s;
+  font-size: 20px;
   color: white;
 }
+
+.navbar a:hover {
+    background-color: #DFD9E2;
+    color: #574999;
+    border-radius: 5px;
+}
+
 .content {
   max-width: 600px;
   margin: 40px auto;
@@ -99,13 +180,54 @@
   flex-direction: column;
 }
 
+.location-header,
+.equipment-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 30vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../public/dumbbell.png");
+    background-blend-mode: multiply;
+    background-color: #574999;
+}
+
+.location-header h1,
+.equipment-header h1 {
+    color: white;
+    margin-right: 30px;
+    font-size: 50px;
+}
+
 .home {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: 90vh;
+  height: 90vh;
   flex-direction: column;
+}
+
+.home h1 {
+    font-size: 3rem;
+    margin-bottom: 3px;
+}
+
+.home p {
+    font-size: 1.5rem;
+}
+
+.home h3 {
+    margin-top: 5px;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.home .location-count {
+    color: #574999;
+    font-weight: bolder;
 }
 
 .login {
@@ -126,17 +248,16 @@
   flex-direction: column;
 }
 
-.content-wrap {
-  padding-bottom: 2.5rem;
-}
+
 
 .appFooter {
   text-align: center;
   background-color: #574999;
-  color: black;
+  color: rgb(255, 255, 255);
   font-size: 16px;
   font-weight: bold;
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
+  height:1vh;
 }

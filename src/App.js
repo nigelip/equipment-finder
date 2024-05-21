@@ -41,7 +41,7 @@ function App() {
           </div>
         </AuthContextProvider>
 
-        <AppFooter className="appFooter" />
+        <AppFooter />
       </div>
     </Router>
   );

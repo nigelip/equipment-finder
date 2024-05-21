@@ -71,6 +71,13 @@ const SearchEquipmentResults = () => {
   }
 
   return (
+    <div>
+    <div className="equipment-header">
+        <h1>
+        {sessionStorage.getItem("equipmentresult")}
+        </h1>
+    </div>
+  
     <div className="resultBox">
       <h1 style={{ backgroundColor: "#574999", color: "white" }}>
         Locations with {sessionStorage.getItem("equipmentresult")}
@@ -136,6 +143,7 @@ const SearchEquipmentResults = () => {
           src={replaceWPlus(currentEquipment.location)}
         ></iframe>
       </Modal>
+    </div>
     </div>
   );
 };

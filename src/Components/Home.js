@@ -31,7 +31,7 @@ const Home = () => {
         you have been eyeing!
       </p>
       <br />
-      <h3>There are currently {option.size} locations to browse</h3>
+      <h3>There are currently <span className="location-count">{option.size}</span> locations to browse</h3>
     </div>
   );
 };
