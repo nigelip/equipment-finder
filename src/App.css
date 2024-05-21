@@ -49,7 +49,7 @@ html {
 .content-wrap {
     display: block;
     background-color: #58499964;
-    height:90vh;
+    /* height:90vh; */
   }
 
 
@@ -138,10 +138,12 @@ html {
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
   top: 0;
-  height: 3vh;
+  height: 6vh;
+  background-color: #584999;
+  /* background-color: white; */
 }
 .navbar h1 {
-  background-color: #574999;
+  background-color: transparent;
   color: white;
   padding: 10px;
   border-radius: 5px;
@@ -151,17 +153,19 @@ html {
 }
 .navbar a {
   margin-left: 16px;
+  margin-right: 16px;
   text-decoration: none;
   padding: 6px;
-  transition: 0.5ms;
+  transition: 0.3s;
+  font-size: 20px;
+  color: white;
 }
 
 .navbar a:hover {
-  background-color: #574999;
-  color: white;
-  border-radius: 5px;
+    background-color: #DFD9E2;
+    color: #574999;
+    border-radius: 5px;
 }
-
 
 .content {
   max-width: 600px;
@@ -174,6 +178,27 @@ html {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.location-header,
+.equipment-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 30vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../public/dumbbell.png");
+    background-blend-mode: multiply;
+    background-color: #574999;
+}
+
+.location-header h1,
+.equipment-header h1 {
+    color: white;
+    margin-right: 30px;
+    font-size: 50px;
 }
 
 .home {

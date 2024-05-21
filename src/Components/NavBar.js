@@ -13,7 +13,7 @@ const NavBar = () => {
   };
   return (
     <nav className="navbar">
-      <Link to="/">
+        <Link to="/">
         <h1>The AF Guide</h1>
       </Link>
       <div className="links">

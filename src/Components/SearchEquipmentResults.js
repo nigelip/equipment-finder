@@ -44,64 +44,72 @@ const SearchEquipmentResults = () => {
   }
 
   return (
-    <div className="resultBox">
-      <h1>Locations with {sessionStorage.getItem("equipmentresult")}</h1>
-      <br />
-      <List
-        bordered
-        style={{ width: "50%" }}
-        pagination={{
-          position,
-          align,
-          // defaultPageSize: 5,
-        }}
-        dataSource={results}
-        renderItem={(target) => (
-          <List.Item>
-            <List.Item.Meta
-              title={
-                <Button type="link" onClick={() => showModal(target)}>
-                  <h2>{target.location}</h2>
-                </Button>
-              }
-              description={target.name}
-            />
-          </List.Item>
-        )}
-      />
-      <Modal
-        open={open}
-        title={currentEquipment.name}
-        onOk={handleOk}
-        onCancel={handleOk}
-        footer={null}
-      >
-        <p>
-          Location: <b>{currentEquipment.location}</b>
-        </p>
-        <p>
-          Target Muscle: <b>{currentEquipment.target}</b>
-        </p>
-        <p>
-          Brand: <b>{currentEquipment.brand}</b>
-        </p>
-        <p>
-          Type: <b>{currentEquipment.type}</b>
-        </p>
+    <div>
+    <div className="equipment-header">
+    <h1>
+        {sessionStorage.getItem("equipmentresult")}
+      </h1>
+    </div>
+        <div>
+        <h1>Locations with {sessionStorage.getItem("equipmentresult")}</h1>
         <br />
-        <iframe
-          title="mapBox"
-          style={{
-            width: "auto",
-            height: "40vh",
-            style: "border:1",
-            loading: "lazy",
-          }}
-          allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade"
-          src={replaceWPlus(currentEquipment.location)}
-        ></iframe>
-      </Modal>
+        <List
+            className="location-list"
+            bordered
+            style={{ width: "50%" }}
+            pagination={{
+            position,
+            align,
+            // defaultPageSize: 5,
+            }}
+            dataSource={results}
+            renderItem={(target) => (
+            <List.Item>
+                <List.Item.Meta
+                title={
+                    <Button type="link" onClick={() => showModal(target)}>
+                    <h2>{target.location}</h2>
+                    </Button>
+                }
+                description={target.name}
+                />
+            </List.Item>
+            )}
+        />
+        <Modal
+            open={open}
+            title={currentEquipment.name}
+            onOk={handleOk}
+            onCancel={handleOk}
+            footer={null}
+        >
+            <p>
+            Location: <b>{currentEquipment.location}</b>
+            </p>
+            <p>
+            Target Muscle: <b>{currentEquipment.target}</b>
+            </p>
+            <p>
+            Brand: <b>{currentEquipment.brand}</b>
+            </p>
+            <p>
+            Type: <b>{currentEquipment.type}</b>
+            </p>
+            <br />
+            <iframe
+            title="mapBox"
+            style={{
+                width: "auto",
+                height: "40vh",
+                style: "border:1",
+                loading: "lazy",
+            }}
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src={replaceWPlus(currentEquipment.location)}
+            ></iframe>
+        </Modal>
+        </div>
     </div>
   );
 };

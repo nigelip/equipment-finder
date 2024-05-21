@@ -64,9 +64,11 @@ const SearchLocResults = () => {
 
   return (
     <div>
-      <h1 style={{ backgroundColor: "#574999", color: "white" }}>
+    <div className="location-header">
+      <h1>
         {sessionStorage.getItem("locresult")}
       </h1>
+      </div>
       <br />
       <ResultBox title="Back" results={backResults} />
       <ResultBox title="Chest" results={chestResults} />
