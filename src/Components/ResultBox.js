@@ -4,8 +4,9 @@ import { storage } from "../firebase";
 import { getDownloadURL, ref } from "firebase/storage";
 
 const ResultBox = (props) => {
-  const title = props.title;
-  const results = props.results;
+  // const title = props.title;
+  // const results = props.results;
+  const { title, results } = props;
   const [fetchedResults, setFetchedResults] = useState([]);
   useEffect(() => {
     const fetchUrls = async () => {
@@ -20,7 +21,7 @@ const ResultBox = (props) => {
             );
             return { ...item, url };
           } catch (error) {
-            console.error("Failed to fetch URL for ${item.name}:", error);
+            // console.error("Failed to fetch URL for ${item.name}:", error);
             return { ...item, url: "https://via.placeholder.com/200" }; // Fallback URL
           }
         })
@@ -52,7 +53,7 @@ const ResultBox = (props) => {
                     className="eimg"
                     width={200}
                     src={target.url}
-                    // alt={target.name}
+                    alt={target.name}
                   />
                 }
               >
