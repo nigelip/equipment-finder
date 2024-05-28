@@ -3,6 +3,7 @@ import { Button, Form, AutoComplete } from "antd";
 import { db } from "../firebase";
 import { collection, onSnapshot, addDoc } from "firebase/firestore";
 import { UserAuth } from "../context/AuthContext";
+import banner from '../gym-banner.png';
 
 import { useNavigate } from "react-router-dom";
 
@@ -108,25 +109,25 @@ const DBEditor = () => {
   });
 
   return (
-    <div className="inventoryForm">
-      <h1>Welcome, {user?.displayName}</h1>
-      <br />
+    <div className="db-editor">
 
+      <div className="top-banner">
+        <img src={banner}/>
+        <h1 className="banner-title">Database Editor</h1>
+      </div>
+
+      <div className="inventoryForm">
       <Form
+        className="form-container"
         form={form}
         {...formItemLayout}
         variant="filled"
-        style={{
-          maxWidth: 600,
-          width: 300,
-          position: "center",
-        }}
         onFinish={handleSubmit}
       >
         {/* location input */}
 
         <Form.Item
-          label="location"
+          label="Location"
           name="location"
           rules={[
             {
@@ -148,7 +149,7 @@ const DBEditor = () => {
 
         {/* Name input */}
         <Form.Item
-          label="name"
+          label="Name"
           name="name"
           rules={[
             {
@@ -171,7 +172,7 @@ const DBEditor = () => {
         {/* Brand input */}
 
         <Form.Item
-          label="brand"
+          label="Brand"
           name="brand"
           rules={[
             {
@@ -192,7 +193,7 @@ const DBEditor = () => {
         </Form.Item>
 
         <Form.Item
-          label="target"
+          label="Target"
           name="target"
           rules={[
             {
@@ -213,7 +214,7 @@ const DBEditor = () => {
         </Form.Item>
 
         <Form.Item
-          label="type"
+          label="Type"
           name="type"
           rules={[
             {
@@ -226,6 +227,7 @@ const DBEditor = () => {
             showSearch
             allowClear
             placeholder="Select type"
+            
             // optionFilterProp="children"
             onChange={(e) => setType(e)}
             filterOption={filterOption}
@@ -247,17 +249,19 @@ const DBEditor = () => {
         </Form.Item>
 
         <Form.Item
-          wrapperCol={{
-            offset: 6,
-            span: 16,
-          }}
+          // wrapperCol={{
+          //   offset: 6,
+          //   span: 16,
+          // }}
         >
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" className="submit-btn">
             Submit
           </Button>
         </Form.Item>
       </Form>
     </div>
+    </div>
+    
   );
 };
 
