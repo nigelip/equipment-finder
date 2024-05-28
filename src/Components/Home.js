@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [equipment, setEquipment] = useState([]);
@@ -21,17 +22,37 @@ const Home = () => {
 
   return (
     <div className="home">
-      <h1>Welcome to the AF guide!</h1>
-      <p>
-        Ever had an equipment you wanted to use that was not available at your
-        home gym?
-      </p>
-      <p>
-        With this site, you can finally find out which gyms carry the equipment
-        you have been eyeing!
-      </p>
+
+      <div className="home-welcome">
+        <h1>Welcome to 
+          <span id="brand-name"> AF Guide.</span>
+          </h1>
+        <p>Ever had an equipment you wanted to use that was not available at your
+        home gym? With this site, you can finally find out which gyms carry the equipment
+        you have been eyeing!</p>
+        <div className="button-container">
+          <Link to="/searchgym" className="search-gym-btn">Search Gym</Link>
+          <Link to="/searchequipment" className="search-equip-btn">Search Equipment</Link>
+        </div>
+      </div>
+
+      <div className="home-exclusively-made">
+        <h1><span id="exclusively">Exclusively</span> Made</h1>
+        <p>This project is made for AF members who enjoy exploring many AF gyms islandwide.</p>
+      </div>
+      <div className="home-stats">
+        <div className="gym-stats">
+          <h1><span id="gym-count">{option.size}</span> Gyms available</h1>
+          <p>Find out what equipment these gyms have!</p>
+        </div>
+        <div className="equip-stats">
+          <h1><span id="equip-count">83</span> Equipments available</h1>
+          <p>Browse through the extensive list of equipments!</p>
+        </div>
+      </div>
+      <div></div>
       <br />
-      <h3>There are currently <span className="location-count">{option.size}</span> locations to browse</h3>
+
     </div>
   );
 };

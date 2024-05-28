@@ -13,17 +13,23 @@ const NavBar = () => {
   };
   return (
     <nav className="navbar">
-        <Link to="/">
-        <h1>The AF Guide</h1>
+
+      <Link to="/" className="home-btn">
+          <h1>AF Guide</h1>
       </Link>
+        
       <div className="links">
-        {user && <Link to="/dbEditor">Add equipment</Link>}
-        <Link to="/searchequipment">Search Equipment</Link>
-        <Link to="/searchgym">Search Gym</Link>
+        {user && <Link to="/dbEditor" className="link-btn">Add Data</Link>}
+        <Link to="/searchequipment" className="link-btn">Equipment</Link>
+        <Link to="/searchgym" className="link-btn">Gyms</Link>
         {user?.displayName ? (
-          <button onClick={handleSignOut}>Logout</button>
+          <div className="user-account">
+            <p>Welcome, {user?.displayName}</p>
+            <button onClick={handleSignOut} className="logout-btn">Logout</button>
+          </div>
+          
         ) : (
-          <Link to="loginPage">Login</Link>
+          <Link to="loginPage" className="login-btn">Login</Link>
         )}
       </div>
     </nav>
