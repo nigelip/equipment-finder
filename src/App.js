@@ -21,6 +21,7 @@ function App() {
           <div className="content-wrap">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/equipment-finder" element={<Home />} />
               <Route path="/loginPage" element={<Login />} />
               <Route path="/searchequipment" element={<SearchByEquipment />} />
               <Route
