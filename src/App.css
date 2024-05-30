@@ -3,7 +3,9 @@
 body {
 	font-family: 'Poppins', sans-serif;
 	font-weight: 400;
+  scroll-behavior: smooth;
 	color: #000;
+  overflow-x: hidden;
 }
 
 :root {
@@ -21,13 +23,12 @@ body, html {
   height: 100%;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
-  scroll-behavior: smooth; /* Smooth scrolling */
 }
 
 .App {
   text-align: center;
   overflow-x: hidden;
-  overflow-y:inherit;
+  overflow-y:hidden;
 }
 
 .App-logo {
@@ -413,6 +414,7 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
   align-items: center;
   display: flex;
   justify-content: center;
+  overflow:hidden;
 }
 
 .home .home-exclusively-made {
@@ -514,8 +516,40 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
       --font-size-btn: 1.1rem;
       --padding-btn: 7px 14px;
   }
-
 }
+
+/* NotFound */
+
+#notfound {
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+  background-color: #6247aa;
+  background-image: linear-gradient(316deg, #6247aa 0%, #a594f9 74%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.notfound-container h1 {
+  font-weight: normal;
+  font-size: var(--font-size-h1);
+  color: #fff;
+  font-weight: 800;
+}
+
+.notfound-container p {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: var(--font-size-p);
+  color: #fff;
+}
+
+
 
 /* DB Editor */
 

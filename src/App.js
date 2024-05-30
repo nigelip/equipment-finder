@@ -11,6 +11,7 @@ import AppFooter from "./Components/Footer.js";
 import { AuthContextProvider } from "./context/AuthContext.js";
 import Login from "./Components/Login.js";
 import Protected from "./Components/Protected.js";
+import NotFound from "./Components/NotFound.js";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <div className="content-wrap">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/equipment-finder" element={<Home />} />
               <Route path="/loginPage" element={<Login />} />
               <Route path="/searchequipment" element={<SearchByEquipment />} />
               <Route
@@ -37,6 +39,7 @@ function App() {
                   </Protected>
                 }
               />
+              <Route path="*" element={<NotFound />}/>
             </Routes>
           </div>
         </AuthContextProvider>
