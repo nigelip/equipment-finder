@@ -1,5 +1,5 @@
 # Check it out here
-nigelip.github.io/equipment-finder
+https://nigelip.github.io/equipment-finder
 
 # Getting Started with Create React App
 
