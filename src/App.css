@@ -147,7 +147,6 @@ body, html {
 * {
   margin: 0;
   font-family: "Quicksand";
-  color: #333;
 }
 
 
@@ -159,20 +158,44 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
 .navbar {
   padding: 20px;
   position: fixed;
-  width:100%;
+  width: 100%;
   display: flex;
   align-items: center;
-  flex-direction: row;
   justify-content: space-between;
-  /* border-bottom: 1px solid #f2f2f2; */
   top: 0;
   background-color: white;
-  box-shadow: 0 3px 5px rgba(38,35,32,0.1);
-  /* background-color: white; */
-  z-index:1;
+  box-shadow: 0 3px 5px rgba(38, 35, 32, 0.1);
+  z-index: 1;
+  transition: background-color 0.3s ease; /* Add transition for background color */
+}
+
+.navbar .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 100; /* Ensure the overlay is above everything else */
+  display: none; /* Initially hidden */
+}
+
+.navbar .links.active {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%; /* Position below the navbar */
+  left: 0;
+  width: 100%; /* Take full width of the screen */
+  background-color: #f1f1f1; /* Background color for the menu */
+  z-index: 101; /* Ensure the menu is above the overlay */
+  overflow: auto; /* Enable scrolling if content exceeds height */
 }
 
 
+.navbar:hover {
+  background-color: #f8f9fa; /* Change background color on hover */
+}
 
 .navbar .home-btn {
   text-decoration: none;
@@ -180,27 +203,30 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
 
 .navbar .home-btn h1 {
   color: #553898;
-  margin-left:10px;
+  margin-left: 10px;
+  transition: color 0.3s ease; /* Add transition for color */
 }
 
-.navbar .home-btn:hover {
-  background-color: transparent;
+.navbar .home-btn:hover h1 {
+  color: #6f42c1; /* Change color on hover */
 }
 
 .navbar .links {
   display: flex;
   align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-  gap:20px;
-  margin-right:40px;
+  gap: 20px;
+  margin-right: 40px;
 }
 
 .navbar .links .link-btn {
   text-decoration: none;
   color: #553898;
   font-weight: 800;
-  transition: 0.3s;
+  transition: color 0.3s ease; /* Add transition for color */
+}
+
+.navbar .links .link-btn:hover {
+  color: #6f42c1; /* Change color on hover */
 }
 
 .navbar .links .user-account {
@@ -213,66 +239,182 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
   font-weight: 800;
   color: #282c34;
 }
-.navbar .links .link-btn:hover {
-  color: hsla(258, 46%, 41%, 0.5);
-}
 
-.navbar .links .login-btn {
-  background-color: #553898;
-  color: #f1f1f2;
-  border-radius: 5px;
-  border: none;
-  padding: 6px 12px 6px 12px;
-  margin-left: 12px;
-  cursor: pointer;
-  transition: 0.3s;
-  text-decoration: none;
-}
-
-.navbar .links .login-btn:hover {
-  background-color: hsla(258, 46%, 41%, 0.5);
-}
-
+.navbar .links .login-btn,
 .navbar .links .logout-btn {
   background-color: #553898;
   color: #f1f1f2;
   border-radius: 5px;
   border: none;
-  padding: 6px 12px 6px 12px;
-  margin-left: 12px;
+  padding: 6px 12px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Add transitions */
   text-decoration: none;
 }
 
+.navbar .links .login-btn:hover,
 .navbar .links .logout-btn:hover {
-  background-color: hsla(258, 46%, 41%, 0.5);
+  background-color: #6f42c1; /* Change background color on hover */
+  color: #fff; /* Change color on hover */
 }
+
+.menu-icon {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 40px;
+}
+
+.menu-icon:hover {
+  transform: scale(1.1); /* Add hover effect */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .navbar .links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-right: 0;
+    padding: 20px 0;
+    display: none;
+  }
+
+  .navbar .links.active {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .menu-icon {
+    margin-right: 40px;
+    transition: transform 0.3s ease; /* Add transition for transform */
+  }
+
+  .menu-icon:hover {
+    transform: scale(1.1); /* Add hover effect */
+  }
+}
+
+
+
 .content {
   max-width: 600px;
   margin: 40px auto;
   padding: 20px;
 }
 
-.resultBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+/* Result Box (Gym Equipment) */
+
+.result-box-overall {
+  padding: 10px;
+  background-color: #f1f1f1;
 }
+
+.resultBox {
+  width: 90%;
+  max-width: 1200px;
+  margin: 24px auto;
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: transparent;
+  text-align: center;
+}
+
+.resultBox h1 {
+  color: #553898;
+  font-weight: 800;
+  font-size: 60px;
+  margin-bottom: 20px;
+  text-shadow: hsla(0, 0%, 0%, 0.1) 0 0 5px;
+  opacity: 1;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  flex: 1 1 250px;
+  max-width: 250px;
+  margin: 10px;
+  background-color: transparent;
+  border: none;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.card-img {
+  width: 100%;
+  height: auto;
+}
+
+.card-details {
+  padding: 10px;
+}
+
+.card-details h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #553898;
+}
+
+.card-details h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #888;
+}
+
+/* In-view class for animations */
+.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .resultBox h1 {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .resultBox h1 {
+    font-size: 30px;
+  }
+}
+
+
+
+
+/* Gym Results Page (SearchLocResults) */
 
 .location-header,
 .equipment-header {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    width: 100%;
-    height: 30vh;
-    background-size: cover;
+    height: 40vh;
+    background-size: cover; /* Default size */
     background-repeat: no-repeat;
     background-image: url("../public/dumbbell.png");
     background-blend-mode: multiply;
     background-color: #574999;
+    padding: 0 20px; /* Add some padding for better spacing */
 }
 
 .location-header h1,
@@ -281,6 +423,38 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
     margin-right: 30px;
     font-size: 50px;
 }
+
+@media (max-width: 768px) {
+  .location-header,
+  .equipment-header {
+      justify-content: center; /* Center the h1 element */
+      text-align: center; /* Center align the text */
+      height: 50vh; /* Increase height for tablets */
+      
+  }
+
+  .location-header h1,
+  .equipment-header h1 {
+      margin-right: 0; /* Reset margin */
+      font-size: 40px; /* Adjust font size if needed */
+  }
+}
+
+@media (max-width: 480px) {
+  .location-header,
+  .equipment-header {
+      height: 60vh; /* Further increase height for mobile */
+      background-size: 200%; /* Make the background image even bigger */
+  }
+
+  .location-header h1,
+  .equipment-header h1 {
+      font-size: 30px; /* Further adjust font size for very small screens */
+  }
+}
+
+
+
 
 
 /* HOME */
@@ -679,13 +853,48 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
 }
 
 .appFooter {
-  text-align: center;
-  background-color: #574999;
-  color: rgb(255, 255, 255);
-  font-size: 16px;
-  font-weight: bold;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  height:1vh;
+  background-color: #f8f9fa;
+  padding: 20px;
+  background-color: #6247aa;
+  background-image: linear-gradient(316deg, #6247aa 0%, #a594f9 74%);
+  height: 20vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.footerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footerContent p {
+  color: white;
+}
+
+.socialIcons {
+  margin-top: 10px;
+}
+
+.socialIcons a {
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.socialIcons svg{
+  color: #553898;
+}
+
+.socialIcons svg:hover{
+  color: hsla(258, 46%, 41%, 0.5);
+}
+
+.socialIcons a:last-child {
+  margin-right: 0;
+}
+
+@media (max-width: 768px) {
+  .footerContent {
+    text-align: center;
+  }
 }
