@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/equipment-finder/static/css/main.a4864268.css",
-    "main.js": "/equipment-finder/static/js/main.ed551047.js",
+    "main.css": "/equipment-finder/static/css/main.1fe3fea9.css",
+    "main.js": "/equipment-finder/static/js/main.d402f5ef.js",
     "static/media/dumbbell.png": "/equipment-finder/static/media/dumbbell.e4a8d8ffcd9afc928ecb.png",
     "static/media/gym-banner.png": "/equipment-finder/static/media/gym-banner.062fc54c3d2b382a8761.png",
     "index.html": "/equipment-finder/index.html",
-    "main.a4864268.css.map": "/equipment-finder/static/css/main.a4864268.css.map",
-    "main.ed551047.js.map": "/equipment-finder/static/js/main.ed551047.js.map"
+    "main.1fe3fea9.css.map": "/equipment-finder/static/css/main.1fe3fea9.css.map",
+    "main.d402f5ef.js.map": "/equipment-finder/static/js/main.d402f5ef.js.map"
   },
   "entrypoints": [
-    "static/css/main.a4864268.css",
-    "static/js/main.ed551047.js"
+    "static/css/main.1fe3fea9.css",
+    "static/js/main.d402f5ef.js"
   ]
 }
