@@ -20,30 +20,14 @@ const SearchByEquipment = () => {
     });
   }, []);
 
-  // const handleSearch = () => {
-  //   results = [];
-  //   for (var i = 0; i < equipment.length; i++) {
-  //     if (equipment[i].name === targetEquipment) {
-  //       results.push(equipment[i]);
-  //     }
-  //   }
-  //   // setresultsList(results);
-  // if (results.length === 0) {
-  //   message.error("No results found. Please try again.", 2);
-  //   return navigate("/searchequipment");
-  // }
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
 
-  // message.success(
-  //   "Search successful! Redirecting to search results page...",
-  //   1.5,
-  //   () => navigate("/searchequipmentresults")
-  // );
-  // };
-
-  //got a feeling this way is faster frfr
   const handleSearch = () => {
     if (!option.has(targetEquipment)) {
       message.error("No results found. Please try again.", 2);
+      scrollToTop();
       return navigate("/searchequipment");
     }
 
@@ -52,7 +36,10 @@ const SearchByEquipment = () => {
     message.success(
       "Search successful! Redirecting to search results page...",
       1.5,
-      () => navigate("/searchequipmentresults")
+      () => {
+        scrollToTop();
+        navigate("/searchequipmentresults");
+      }
     );
   };
 
@@ -68,34 +55,35 @@ const SearchByEquipment = () => {
   return (
     <>
       <div className="search">
-      <h1 className="text-search">Find an Equipment</h1>
-
-      <div className="search-container">
-        <AutoComplete
-        className="custom-search-bar"
-          style={{
-            width: 300,
-          }}
-          options={options}
-          placeholder="Search Equipment"
-          filterOption={(inputValue, option) =>
-            option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
-          }
-          onChange={(value) => {
-            setTargetEquipment(value);
-          }}
-          optionHeight={4}
-          size="large"
-        />
-        <Button
-          type="primary"
-          className="search-button"
-          size="large"
-          icon={<SearchOutlined className="search-icon" />}
-          onClick={handleSearch}
-        />
-      </div>
-        
+        <h1 className="text-search">Find an Equipment</h1>
+        <div className="search-container">
+          <AutoComplete
+            className="custom-search-bar"
+            style={{
+              width: 300,
+            }}
+            options={options}
+            placeholder="Search Equipment"
+            filterOption={(inputValue, option) =>
+              option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+            }
+            onChange={(value) => {
+              setTargetEquipment(value);
+            }}
+            optionHeight={4}
+            size="large"
+          />
+          <Button
+            type="primary"
+            className="search-button"
+            size="large"
+            icon={<SearchOutlined className="search-icon" />}
+            onClick={() => {
+              handleSearch();
+              scrollToTop();
+            }}
+          />
+        </div>
       </div>
     </>
   );

@@ -61,6 +61,10 @@ const Home = () => {
     option.add(item["location"]);
   });
 
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="home">
       <section id="hero">
@@ -74,10 +78,10 @@ const Home = () => {
               carry the equipment you have been eyeing!
             </p>
             <div className="button-container" ref={el => heroItemsRef.current[3] = el}>
-              <Link to="/searchgym" className="search-gym-btn">
+              <Link to="/searchgym" className="search-gym-btn" onClick={scrollToTop}>
                 Search Gym
               </Link>
-              <Link to="/searchequipment" className="search-equip-btn">
+              <Link to="/searchequipment" className="search-equip-btn" onClick={scrollToTop}>
                 Search Equipment
               </Link>
             </div>
