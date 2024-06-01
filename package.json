@@ -1,7 +1,7 @@
 {
   "name": "equipment-finder",
   "version": "0.1.0",
-  "homepage": "https://nigelip.github.io/equipment-finder",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
