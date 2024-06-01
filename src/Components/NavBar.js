@@ -67,9 +67,11 @@ const NavBar = () => {
           Gyms
         </Link>
         {user?.displayName ? (
+          <div className="user-account-container">
           <div className="user-account">
             <p>Welcome, {user?.displayName}</p>
-            <button onClick={handleSignOut} className="logout-btn">
+          </div>
+          <button onClick={handleSignOut} className="logout-btn">
               Logout
             </button>
           </div>

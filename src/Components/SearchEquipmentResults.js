@@ -1,9 +1,11 @@
-import { React, useEffect, useState } from "react";
-import { List, Modal, Button } from "antd";
+import React, { useEffect, useState } from "react";
+import { List, Button } from "antd";
 import { db } from "../firebase";
 import { query, where, collection, onSnapshot } from "firebase/firestore";
 import { storage } from "../firebase";
 import { getDownloadURL, ref } from "firebase/storage";
+import FullScreenModal from "./FullScreenModal";
+import { FaMapMarkerAlt, FaBullseye, FaDumbbell, FaInfoCircle } from "react-icons/fa";
 
 const SearchEquipmentResults = () => {
   const position = "bottom";
@@ -18,7 +20,7 @@ const SearchEquipmentResults = () => {
     setOpen(true);
   };
 
-  const handleOk = () => {
+  const handleClose = () => {
     setOpen(false);
   };
 
@@ -72,79 +74,108 @@ const SearchEquipmentResults = () => {
 
   return (
     <div>
-    <div className="equipment-header">
+      <div className="equipment-header">
+        <h1>{sessionStorage.getItem("equipmentresult")}</h1>
+      </div>
+      <div className="result-box-overall">
+        <div className="resultBox">
+        
         <h1>
-        {sessionStorage.getItem("equipmentresult")}
+          Locations
         </h1>
-    </div>
-  
-    <div className="resultBox">
-      <h1 style={{ backgroundColor: "#574999", color: "white" }}>
-        Locations with {sessionStorage.getItem("equipmentresult")}
-      </h1>
-      <br />
-      <List
-        bordered
-        style={{ width: "50%" }}
-        pagination={{
-          position,
-          align,
-          defaultPageSize: 5,
-        }}
-        dataSource={results}
-        renderItem={(target) => (
-          <List.Item>
-            <List.Item.Meta
-              title={
-                <Button type="link" onClick={() => showModal(target)}>
-                  <h2>{target.location}</h2>
-                </Button>
-              }
-              description={target.name}
-            />
-          </List.Item>
-        )}
-      />
-      <Modal
-        open={open}
-        title={currentEquipment.name}
-        onOk={handleOk}
-        onCancel={handleOk}
-        footer={null}
-      >
-        <p>
-          Location: <b>{currentEquipment.location}</b>
-        </p>
-        <p>
-          Target Muscle: <b>{currentEquipment.target}</b>
-        </p>
-        <p>
-          Brand: <b>{currentEquipment.brand}</b>
-        </p>
-        <p>
-          Type: <b>{currentEquipment.type}</b>
-        </p>
-        <br />
-        <img
-          src={link}
-          alt="logo"
-          style={{ height: "200px", width: "200px" }}
+        <div>
+          <List
+          className="result-box-list"
+          dataSource={results}
+          renderItem={(target) => (
+            <List.Item className="location-list-item">
+              <div className="location-list-item-name">
+                <p>
+                  <b id="location-name">{target.location}</b>
+                </p>
+                <p>
+                  {target.brand}
+                </p>
+              </div>
+                  
+                  <Button className="show-modal-btn" type="link" onClick={() => showModal(target)}>
+                  <FaInfoCircle />
+                </Button>    
+            </List.Item>
+          )}
         />
-        <iframe
-          title="mapBox"
-          style={{
-            width: "auto",
-            height: "40vh",
-            style: "border:1",
-            loading: "lazy",
-          }}
-          allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade"
-          src={replaceWPlus(currentEquipment.location)}
-        ></iframe>
-      </Modal>
+        </div>
+        
+
+        <FullScreenModal open={open} onClose={handleClose} title={currentEquipment.name}>
+          
+          <div className="modal-top-container">
+            <div className="modal-img-container">
+              <img
+              src={link}
+              alt="logo"
+              style={{ height: "200px", width: "200px" }}
+            />
+            </div>
+            
+            <div className="modal-details-container">
+              
+              <div className="header-names">
+                 <h2>
+                {currentEquipment.brand}
+                </h2>
+
+                <h1>{currentEquipment.name}</h1>
+              </div>
+             
+              <div className="details-container">
+                <div id="details">
+                  <FaMapMarkerAlt />
+                  <p>
+                  {currentEquipment.location}
+                  </p>
+                </div>
+
+                <div id="details">
+                    <FaBullseye />
+                    <p>
+                    {currentEquipment.target}
+                  </p>
+                </div>
+
+                <div id="details">
+                  <FaDumbbell />
+                  <p>
+                  {currentEquipment.type}
+                </p>
+                </div> 
+              </div> 
+            </div>
+          </div>
+          
+          <div className="modal-bottom-container">
+            <iframe
+            title="mapBox"
+            style={{
+              border: "1px solid",
+              loading: "lazy",
+            }}
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+            src={replaceWPlus(currentEquipment.location)}
+            ></iframe>
+          </div>
+
+          <div className="modal-links-container">
+            <button className="view-equip-btn">View {currentEquipment.location} equipment</button>
+          </div>
+
+          
+        </FullScreenModal>
+      </div>
     </div>
     </div>
+      
   );
 };
 

@@ -69,7 +69,7 @@ const SearchByLoc = () => {
   return (
     <>
       <div className="search">
-      <p className="text-search">Find a Gym</p>
+      <h1 className="text-search">Find a Gym</h1>
       <div className="search-container">
         <AutoComplete
         className="custom-search-bar"

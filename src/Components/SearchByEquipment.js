@@ -68,7 +68,7 @@ const SearchByEquipment = () => {
   return (
     <>
       <div className="search">
-      <p className="text-search">Find an Equipment</p>
+      <h1 className="text-search">Find an Equipment</h1>
 
       <div className="search-container">
         <AutoComplete
