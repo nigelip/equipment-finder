@@ -1,5 +1,5 @@
 # Check it out here
-https://nigelip.github.io/equipment-finder
+https://equipment-finder.vercel.app
 
 # Getting Started with Create React App
 
