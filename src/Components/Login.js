@@ -22,12 +22,10 @@ const Login = () => {
   }, [user]);
 
   return (
-    <div className="login">
+    <div className="login-container">
       <h1>
-        Logging in is only for <u>authorised</u> members who want to add
-        equipment into the database
+        This feature is only available to <u>authorised</u>  users.
       </h1>
-      <p>Rest of the features are available to use</p>
       <GoogleButton onClick={handleGoogleSignIn} />
     </div>
   );

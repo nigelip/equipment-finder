@@ -35,10 +35,10 @@ const SearchByEquipment = () => {
 
     message.success(
       "Search successful! Redirecting to search results page...",
-      1.5,
+      1,
       () => {
-        scrollToTop();
         navigate("/searchequipmentresults");
+        scrollToTop();
       }
     );
   };

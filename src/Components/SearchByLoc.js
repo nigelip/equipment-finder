@@ -5,6 +5,10 @@ import { SearchOutlined } from "@ant-design/icons";
 import { collection, onSnapshot } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
+const scrollToTop = () => {
+  window.scrollTo(0, 0);
+};
+
 const SearchByLoc = () => {
   const [equipment, setEquipment] = useState([]);
   const [targetLoc, setTargetLoc] = useState("");
@@ -45,6 +49,7 @@ const SearchByLoc = () => {
   const handleSearch = () => {
     if (!option.has(targetLoc)) {
       message.error("No results found. Please try again.", 2);
+      scrollToTop();
       return navigate("/searchgym");
     }
 
@@ -52,8 +57,11 @@ const SearchByLoc = () => {
 
     message.success(
       "Search successful! Redirecting to search results page...",
-      1.5,
-      () => navigate("/searchgymresults")
+      1,
+      () => {
+        navigate("/searchgymresults");
+        scrollToTop();
+      } 
     );
   };
 
@@ -92,7 +100,10 @@ const SearchByLoc = () => {
           className="search-button"
           size="large"
           icon={<SearchOutlined className="search-icon" />}
-          onClick={handleSearch}
+          onClick={() => {
+            handleSearch();
+            scrollToTop();
+        }}
         />
       </div>
         
