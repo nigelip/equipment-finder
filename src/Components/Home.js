@@ -65,22 +65,22 @@ const Home = () => {
     <div className="home">
       <section id="hero">
         <div className="home-welcome" ref={el => heroItemsRef.current[0] = el}>
-          <h1 ref={el => heroItemsRef.current[1] = el}>
-            Welcome to <span id="brand-name">AF Guide.</span>
-          </h1>
-          <p ref={el => heroItemsRef.current[2] = el}>
-            Ever had an equipment you wanted to use that was not available at
-            your home gym? With this site, you can finally find out which gyms
-            carry the equipment you have been eyeing!
-          </p>
-          <div className="button-container" ref={el => heroItemsRef.current[3] = el}>
-            <Link to="/searchgym" className="search-gym-btn">
-              Search Gym
-            </Link>
-            <Link to="/searchequipment" className="search-equip-btn">
-              Search Equipment
-            </Link>
-          </div>
+            <h1 ref={el => heroItemsRef.current[1] = el}>
+              Welcome to <span id="brand-name">AF Guide.</span>
+            </h1>
+            <p ref={el => heroItemsRef.current[2] = el}>
+              Ever had an equipment you wanted to use that was not available at
+              your home gym? With this site, you can finally find out which gyms
+              carry the equipment you have been eyeing!
+            </p>
+            <div className="button-container" ref={el => heroItemsRef.current[3] = el}>
+              <Link to="/searchgym" className="search-gym-btn">
+                Search Gym
+              </Link>
+              <Link to="/searchequipment" className="search-equip-btn">
+                Search Equipment
+              </Link>
+            </div>
         </div>
       </section>
 
