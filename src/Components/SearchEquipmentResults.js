@@ -10,8 +10,7 @@ import {
   FaMapMarkerAlt,
   FaBullseye,
   FaDumbbell,
-  FaInfoCircle,
-  s,
+  FaInfoCircle
 } from "react-icons/fa";
 
 const SearchEquipmentResults = () => {
@@ -96,7 +95,7 @@ const SearchEquipmentResults = () => {
       <div className="equipment-header">
         <h1>{sessionStorage.getItem("equipmentresult")}</h1>
       </div>
-      <div className="result-box-overall">
+      <div className="result-box-equip-overall">
         <div className="resultBox">
           <h1>Locations</h1>
           <div>

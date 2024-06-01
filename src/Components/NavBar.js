@@ -49,7 +49,8 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="navbar">
+    <div className="navbar-container">
+      <nav className="navbar">
       <Link to="/" className="home-btn" onClick={scrollToTop}>
         <h1>AF Guide</h1>
       </Link>
@@ -86,6 +87,8 @@ const NavBar = () => {
         {menuOpen ? <FaTimes /> : <FaBars />}
       </div>
     </nav>
+    </div>
+    
   );
 };
 
