@@ -1,9 +1,16 @@
- @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+ /* @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"); */
+ @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+ * {
+  margin: 0;
+  font-family: "Poppins";
+}
+
 
 body {
 	font-family: 'Poppins', sans-serif;
 	font-weight: 400;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 	color: #000;
   overflow-x: hidden;
 }
@@ -22,7 +29,7 @@ body, html {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .App {
@@ -145,12 +152,6 @@ body, html {
 
 .search .search-icon svg {
     color: #553898;
-}
-
-
-* {
-  margin: 0;
-  font-family: "Poppins";
 }
 
 

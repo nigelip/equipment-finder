@@ -44,26 +44,26 @@ const NavBar = () => {
     setOverlayOpen(false); // Close overlay when menu is closed
   };
 
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <nav className="navbar">
-      <Link to="/" className="home-btn">
+      <Link to="/" className="home-btn" onClick={scrollToTop}>
         <h1>AF Guide</h1>
       </Link>
 
       <div className={`links ${menuOpen ? "active" : ""}`} ref={menuRef}>
         {user && (
-          <Link to="/dbEditor" className="link-btn" onClick={closeMenu}>
+          <Link to="/dbEditor" className="link-btn" onClick={() => { closeMenu(); scrollToTop(); }}>
             Add Data
           </Link>
         )}
-        <Link
-          to="/searchequipment"
-          className="link-btn"
-          onClick={closeMenu}
-        >
+        <Link to="/searchequipment" className="link-btn" onClick={() => { closeMenu(); scrollToTop(); }}>
           Equipment
         </Link>
-        <Link to="/searchgym" className="link-btn" onClick={closeMenu}>
+        <Link to="/searchgym" className="link-btn" onClick={() => { closeMenu(); scrollToTop(); }}>
           Gyms
         </Link>
         {user?.displayName ? (
@@ -76,7 +76,7 @@ const NavBar = () => {
             </button>
           </div>
         ) : (
-          <Link to="loginPage" className="login-btn" onClick={closeMenu}>
+          <Link to="loginPage" className="login-btn" onClick={() => { closeMenu(); scrollToTop(); }}>
             Login
           </Link>
         )}
