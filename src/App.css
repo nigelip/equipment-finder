@@ -23,6 +23,10 @@ body {
     --padding-btn: 12px 24px;
 }
 
+::selection {
+  background: hsla(181, 100%, 41%, 0.551);
+}
+
 body, html {
   margin: 0;
   padding: 0;
