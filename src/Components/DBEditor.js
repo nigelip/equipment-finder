@@ -3,7 +3,6 @@ import { Button, Form, AutoComplete } from "antd";
 import { db } from "../firebase";
 import { collection, onSnapshot, addDoc } from "firebase/firestore";
 import { UserAuth } from "../context/AuthContext";
-import banner from '../gym-banner.png';
 
 import { useNavigate } from "react-router-dom";
 
@@ -112,8 +111,7 @@ const DBEditor = () => {
     <div className="db-editor">
 
       <div className="top-banner">
-        <img src={banner}/>
-        <h1 className="banner-title">Database Editor</h1>
+        <h1>Database Editor</h1>
       </div>
 
       <div className="inventoryForm">
