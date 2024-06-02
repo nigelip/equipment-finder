@@ -17,14 +17,16 @@ const Login = () => {
 
   useEffect(() => {
     if (user != null) {
-      navigate("/dbEditor");
+      setTimeout(() => {
+        navigate("/dbEditor");
+      }, 2000);
     }
   }, [user]);
 
   return (
     <div className="login-container">
       <h1>
-        This feature is only available to <u>authorised</u>  users.
+        This feature is only available to <u>authorised</u> users.
       </h1>
       <GoogleButton onClick={handleGoogleSignIn} />
     </div>
