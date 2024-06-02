@@ -1,11 +1,23 @@
 import { FaTwitter, FaInstagram, FaLinkedin, FaTiktok } from 'react-icons/fa';
+import { Link } from "react-router-dom";
+
+const scrollToTop = () => {
+  window.scrollTo(0, 0);
+};
 
 const AppFooter = () => {
   return (
     <footer className="appFooter">
-      <div className="footerContent">
-        <p>This is a project made for AF members who enjoy exploring the many AF gyms islandwide.</p>
-        <div className="socialIcons">
+
+      <div className='footer-container'>
+        <h2>AF Guide</h2>
+        <div className='web-links'>
+          <Link to="/" onClick={scrollToTop} className='web-link-btn'>Home</Link>
+          <Link to="/searchequipment" onClick={scrollToTop} className='web-link-btn'>Equipment</Link>
+          <Link to="/searchgym" onClick={scrollToTop} className='web-link-btn'>Gym</Link>
+          <Link to="/" onClick={scrollToTop} className='web-link-btn'>Contribute</Link>      
+        </div>
+        <div className='social-links'>
           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
           <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
