@@ -111,7 +111,9 @@ const SearchEquipmentResults = () => {
           <div>
             {Object.keys(results).map((brand) => (
               <div key={brand}>
-                <h2 className="brand-name">{brand}</h2>
+                <div className="brand-name-container">
+                  <h2 className="brand-name">{brand}</h2>
+                </div>
                 <List
                   className="result-box-list"
                   dataSource={results[brand]}
@@ -121,7 +123,6 @@ const SearchEquipmentResults = () => {
                         <p>
                           <b id="location-name">{target.location}</b>
                         </p>
-                        <p>{target.brand}</p>
                       </div>
 
                       <Button
