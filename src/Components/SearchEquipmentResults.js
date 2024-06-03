@@ -10,15 +10,13 @@ import {
   FaMapMarkerAlt,
   FaBullseye,
   FaDumbbell,
-  FaInfoCircle
+  FaInfoCircle,
 } from "react-icons/fa";
 
 const SearchEquipmentResults = () => {
-  const position = "bottom";
-  const align = "center";
   const [currentEquipment, setCurrentEquipment] = useState([]);
   const [open, setOpen] = useState(false);
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState({});
   const [link, setLink] = useState("");
   const colRef = collection(db, "equipment");
   const navigate = new useNavigate();
@@ -42,6 +40,17 @@ const SearchEquipmentResults = () => {
     setOpen(false);
   };
 
+  const categorizeByBrand = (items) => {
+    return items.reduce((acc, item) => {
+      const { brand } = item;
+      if (!acc[brand]) {
+        acc[brand] = [];
+      }
+      acc[brand].push(item);
+      return acc;
+    }, {});
+  };
+
   useEffect(() => {
     const q = query(
       colRef,
@@ -52,7 +61,8 @@ const SearchEquipmentResults = () => {
       querySnapshot.forEach((doc) => {
         items.push(doc.data());
       });
-      setResults(items);
+      const categorized = categorizeByBrand(items);
+      setResults(categorized);
     });
     return () => {
       unsub();
@@ -99,28 +109,33 @@ const SearchEquipmentResults = () => {
         <div className="resultBox">
           <h1>Locations</h1>
           <div>
-            <List
-              className="result-box-list"
-              dataSource={results}
-              renderItem={(target) => (
-                <List.Item className="location-list-item">
-                  <div className="location-list-item-name">
-                    <p>
-                      <b id="location-name">{target.location}</b>
-                    </p>
-                    <p>{target.brand}</p>
-                  </div>
+            {Object.keys(results).map((brand) => (
+              <div key={brand}>
+                <h2 className="brand-name">{brand}</h2>
+                <List
+                  className="result-box-list"
+                  dataSource={results[brand]}
+                  renderItem={(target) => (
+                    <List.Item className="location-list-item">
+                      <div className="location-list-item-name">
+                        <p>
+                          <b id="location-name">{target.location}</b>
+                        </p>
+                        <p>{target.brand}</p>
+                      </div>
 
-                  <Button
-                    className="show-modal-btn"
-                    type="link"
-                    onClick={() => showModal(target)}
-                  >
-                    <FaInfoCircle />
-                  </Button>
-                </List.Item>
-              )}
-            />
+                      <Button
+                        className="show-modal-btn"
+                        type="link"
+                        onClick={() => showModal(target)}
+                      >
+                        <FaInfoCircle />
+                      </Button>
+                    </List.Item>
+                  )}
+                />
+              </div>
+            ))}
           </div>
 
           <FullScreenModal

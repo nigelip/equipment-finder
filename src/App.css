@@ -1,45 +1,45 @@
- /* @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"); */
- @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
- * {
+* {
   margin: 0;
   font-family: "Poppins";
 }
 
-
 body {
-	font-family: 'Poppins', sans-serif;
-	font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
   /* scroll-behavior: smooth; */
-	color: #000;
+  color: #000;
   overflow-x: hidden;
 }
 
 :root {
-    --font-size-h1: 4rem;
-    --font-size-brand: 5rem;
-    --font-size-p: 1.5rem;
-    --font-size-btn: 1.5rem;
-    --padding-btn: 12px 24px;
+  --font-size-h1: 4rem;
+  --font-size-brand: 5rem;
+  --font-size-p: 1.5rem;
+  --font-size-btn: 1.5rem;
+  --padding-btn: 12px 24px;
 }
 
 ::selection {
   background: hsla(181, 100%, 41%, 0.551);
 }
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .App {
   text-align: center;
   overflow-x: hidden;
-  overflow-y:hidden;
+  overflow-y: hidden;
   background-color: #f9f9f9;
 }
 
@@ -78,9 +78,7 @@ body, html {
   }
 }
 
-
-/* Search by Equipment/Loc */  
-
+/* Search by Equipment/Loc */
 
 .search {
   display: flex;
@@ -100,60 +98,58 @@ body, html {
 }
 
 .search-container {
-    width: 350px;
-    background-color: white;
-    height: 50px;
-    border-radius: 30px;
-    animation: fadeInModal 0.6s ease-in-out forwards;
+  width: 350px;
+  background-color: white;
+  height: 50px;
+  border-radius: 30px;
+  animation: fadeInModal 0.6s ease-in-out forwards;
 }
 
 .custom-search-bar .ant-select-selector {
-    background-color: transparent !important; /* Change to your desired background color */
-    border: none !important;
-    border-radius: 30px !important;
-    font-size: 20px !important;
-    outline: none !important;
-    height:40px !important;
-    margin-top: 5px !important;
-    margin-left: 5px !important;
-  }
+  background-color: transparent !important; /* Change to your desired background color */
+  border: none !important;
+  border-radius: 30px !important;
+  font-size: 20px !important;
+  outline: none !important;
+  height: 40px !important;
+  margin-top: 5px !important;
+  margin-left: 5px !important;
+}
 
+/* IDK why cant remove the blue border when focus */
+.custom-search-bar .ant-select-selector:hover,
+.custom-search-bar .ant-select-selector:active,
+.custom-search-bar .ant-select-selector:focus {
+  border-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
 
-  /* IDK why cant remove the blue border when focus */
-  .custom-search-bar .ant-select-selector:hover, 
-  .custom-search-bar .ant-select-selector:active, 
-  .custom-search-bar .ant-select-selector:focus {
-    border-color: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-  }
-
-  .custom-search-bar .ant-select-selection-search-input {
-    font-size: 20px !important;
-  }
+.custom-search-bar .ant-select-selection-search-input {
+  font-size: 20px !important;
+}
 
 .search-button {
-    background-color: transparent;
-    border: none !important;
-    box-shadow: none;
-    transition: 0.3ms;
+  background-color: transparent;
+  border: none !important;
+  box-shadow: none;
+  transition: 0.3ms;
 }
 
 .search-button:hover {
-    background-color: hsla(0, 0%, 83%, 0.611) !important;
-    border-radius: 50%;
+  background-color: hsla(0, 0%, 83%, 0.611) !important;
+  border-radius: 50%;
 }
 
 .search-button:active {
-    background-color: hsla(0, 0%, 83%, 0.932) !important;
-    border-radius: 50%;
+  background-color: hsla(0, 0%, 83%, 0.932) !important;
+  border-radius: 50%;
 }
 
 .search .search-icon svg {
-    color: #553898;
+  color: #553898;
 }
-
 
 /* Navbar / HEADER */
 
@@ -187,7 +183,7 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
   top: 100%; /* Position below the navbar */
   left: 0;
   width: 100%; /* Take full width of the screen */
-  background-color: #fff;/* Background color for the menu */
+  background-color: #fff; /* Background color for the menu */
   z-index: 101; /* Ensure the menu is above the overlay */
   overflow: auto; /* Enable scrolling if content exceeds height */
 }
@@ -341,7 +337,6 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
   }
 }
 
-
 .content-wrap {
   display: block;
   background-color: #f9f9f9;
@@ -355,14 +350,11 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
   }
 }
 
-
 .content {
   max-width: 600px;
   margin: 40px auto;
   padding: 20px;
 }
-
-
 
 /* Result Box (Gym Equipment) */
 
@@ -371,7 +363,6 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
   min-height: 100vh;
   background-color: #f9f9f9;
 }
-
 
 .result-box-overall {
   padding: 10px;
@@ -399,6 +390,13 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
   text-shadow: hsla(0, 0%, 0%, 0.1) 0 0 5px;
   opacity: 1;
   animation: slideInModalOpp 0.6s ease-in-out forwards;
+}
+
+.brand-name {
+  font-size: 24px;
+  color: #553898;
+  text-align: center;
+  max-width: 250px;
 }
 
 .cards-container {
@@ -460,61 +458,57 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
   }
 }
 
-
-
-
 /* Gym Results Page (SearchLocResults) */
 
 .location-header,
 .equipment-header {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 20vh;
-    background-size: cover; /* Default size */
-    background-repeat: no-repeat;
-    background-image: url("../public/dumbbell.png");
-    background-blend-mode: multiply;
-    background-color: #574999;
-    padding: 0 20px; /* Add some padding for better spacing */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 20vh;
+  background-size: cover; /* Default size */
+  background-repeat: no-repeat;
+  background-image: url("../public/dumbbell.png");
+  background-blend-mode: multiply;
+  background-color: #574999;
+  padding: 0 20px; /* Add some padding for better spacing */
 }
 
 .location-header h1,
 .equipment-header h1 {
-    color: white;
-    margin-right: 30px;
-    font-size: 50px;
-    animation: slideInModal 0.5s ease-out forwards;
+  color: white;
+  margin-right: 30px;
+  font-size: 50px;
+  animation: slideInModal 0.5s ease-out forwards;
 }
 
 @media (max-width: 768px) {
   .location-header,
   .equipment-header {
-      justify-content: center; /* Center the h1 element */
-      align-items: center;
-      text-align: center; /* Center align the text */
-      height: 20vh; /* Increase height for tablets */
-      
+    justify-content: center; /* Center the h1 element */
+    align-items: center;
+    text-align: center; /* Center align the text */
+    height: 20vh; /* Increase height for tablets */
   }
 
   .location-header h1,
   .equipment-header h1 {
-      margin-right: 0; /* Reset margin */
-      font-size: 40px; /* Adjust font size if needed */
+    margin-right: 0; /* Reset margin */
+    font-size: 40px; /* Adjust font size if needed */
   }
 }
 
 @media (max-width: 480px) {
   .location-header,
   .equipment-header {
-      justify-content: center; /* Center the h1 element */
-      align-items: center;
-      height: 20vh; /* Further increase height for mobile */
+    justify-content: center; /* Center the h1 element */
+    align-items: center;
+    height: 20vh; /* Further increase height for mobile */
   }
 
   .location-header h1,
   .equipment-header h1 {
-      font-size: 24px; /* Further adjust font size for very small screens */
+    font-size: 24px; /* Further adjust font size for very small screens */
   }
 }
 
@@ -528,7 +522,7 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
 }
 
 .location-list-item {
-  border:none !important;
+  border: none !important;
   background-color: #f1f1f1;
   /* border: solid #553898 2px !important; */
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);; */
@@ -540,7 +534,6 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
   width: 600px;
   animation: fadeInModal 0.4s ease-in forwards;
 }
-
 
 .location-list-item-name {
   display: flex;
@@ -558,8 +551,8 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
 .location-list-item .show-modal-btn svg {
   color: #553898;
   transition: 0.3s;
+  font-size: 20px;
 }
-
 
 .location-list-item .show-modal-btn svg:hover {
   color: hsla(258, 46%, 41%, 0.5);
@@ -591,9 +584,7 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
   .location-list-item-name p {
     font-size: 16px;
   }
-
 }
-
 
 /* FullScreenModal */
 
@@ -789,7 +780,7 @@ body.modal-open {
 .modal-links-container .view-equip-btn {
   border: none;
   color: white;
-  background-color: #00CED1;
+  background-color: #00ced1;
   cursor: pointer;
   font-weight: 800;
   padding: 8px 16px;
@@ -800,7 +791,6 @@ body.modal-open {
 .modal-links-container .view-equip-btn:hover {
   background-color: #00ced18a;
 }
-
 
 /* HOME */
 @keyframes fadeInUp {
@@ -925,7 +915,6 @@ body.modal-open {
   background-color: #f1f1f1;
 }
 
-
 #exclusively {
   height: 100vh; /* Full viewport height */
   overflow: hidden;
@@ -935,7 +924,7 @@ body.modal-open {
   align-items: center;
   display: flex;
   justify-content: center;
-  overflow:hidden;
+  overflow: hidden;
 }
 
 .home .home-exclusively-made {
@@ -980,64 +969,60 @@ body.modal-open {
   color: #888;
 }
 
-
 .home .home-stats .gym-stats,
 .home .home-stats .equip-stats {
-    background-color: transparent;
-    color: white;
-    padding: 30px 50px;
-    border-radius: 40px;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-    transition: all 0.3s ease;
+  background-color: transparent;
+  color: white;
+  padding: 30px 50px;
+  border-radius: 40px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  transition: all 0.3s ease;
 }
 
-.home .home-stats #count{
+.home .home-stats #count {
   font-weight: 800;
-  color: #00CED1;
+  color: #00ced1;
 }
 
 /* Responsive Design */
 
 @media (max-width: 1200px) {
   :root {
-      --font-size-h1: 4.5rem;
-      --font-size-brand: 5.5rem;
-      --font-size-p: 1.8rem;
-      --font-size-btn: 1.8rem;
-      --padding-btn: 12px 24px;
+    --font-size-h1: 4.5rem;
+    --font-size-brand: 5.5rem;
+    --font-size-p: 1.8rem;
+    --font-size-btn: 1.8rem;
+    --padding-btn: 12px 24px;
   }
-
 }
 
 @media (max-width: 992px) {
   :root {
-      --font-size-h1: 4rem;
-      --font-size-brand: 5rem;
-      --font-size-p: 1.5rem;
-      --font-size-btn: 1.5rem;
-      --padding-btn: 10px 20px;
+    --font-size-h1: 4rem;
+    --font-size-brand: 5rem;
+    --font-size-p: 1.5rem;
+    --font-size-btn: 1.5rem;
+    --padding-btn: 10px 20px;
   }
-
 }
 
 @media (max-width: 768px) {
   :root {
-      --font-size-h1: 3.5rem;
-      --font-size-brand: 4.5rem;
-      --font-size-p: 1.3rem;
-      --font-size-btn: 1.3rem;
-      --padding-btn: 8px 16px;
+    --font-size-h1: 3.5rem;
+    --font-size-brand: 4.5rem;
+    --font-size-p: 1.3rem;
+    --font-size-btn: 1.3rem;
+    --padding-btn: 8px 16px;
   }
-
 }
 
 @media (max-width: 576px) {
   :root {
-      --font-size-h1: 3rem;
-      --font-size-brand: 4rem;
-      --font-size-p: 1.1rem;
-      --font-size-btn: 1.1rem;
-      --padding-btn: 7px 14px;
+    --font-size-h1: 3rem;
+    --font-size-brand: 4rem;
+    --font-size-p: 1.1rem;
+    --font-size-btn: 1.1rem;
+    --padding-btn: 7px 14px;
   }
 }
 
@@ -1060,8 +1045,6 @@ body.modal-open {
   color: #553898;
   width: 60%;
 }
-
-
 
 /* NotFound */
 
@@ -1095,23 +1078,23 @@ body.modal-open {
 /* DB Editor */
 
 .db-editor {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
 }
 
 .db-editor .top-banner {
   display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 20vh;
-    background-size: cover; /* Default size */
-    background-repeat: no-repeat;
-    background-image: url("../public/dumbbell.png");
-    background-blend-mode: multiply;
-    background-color: #574999;
-    padding: 0 20px; /* Add some padding for better spacing */
+  align-items: center;
+  justify-content: flex-end;
+  height: 20vh;
+  background-size: cover; /* Default size */
+  background-repeat: no-repeat;
+  background-image: url("../public/dumbbell.png");
+  background-blend-mode: multiply;
+  background-color: #574999;
+  padding: 0 20px; /* Add some padding for better spacing */
 }
 
 .db-editor .top-banner h1 {
@@ -1123,28 +1106,27 @@ body.modal-open {
 
 @media (max-width: 768px) {
   .db-editor .top-banner {
-      justify-content: center; /* Center the h1 element */
-      align-items: center;
-      text-align: center; /* Center align the text */
-      height: 20vh; /* Increase height for tablets */
-      
+    justify-content: center; /* Center the h1 element */
+    align-items: center;
+    text-align: center; /* Center align the text */
+    height: 20vh; /* Increase height for tablets */
   }
 
   .db-editor .top-banner h1 {
-      margin-right: 0; /* Reset margin */
-      font-size: 40px; /* Adjust font size if needed */
+    margin-right: 0; /* Reset margin */
+    font-size: 40px; /* Adjust font size if needed */
   }
 }
 
 @media (max-width: 480px) {
   .db-editor .top-banner {
-      justify-content: center; /* Center the h1 element */
-      align-items: center;
-      height: 20vh; /* Further increase height for mobile */
+    justify-content: center; /* Center the h1 element */
+    align-items: center;
+    height: 20vh; /* Further increase height for mobile */
   }
 
-  .db-editor .top-banner h1{
-      font-size: 24px; /* Further adjust font size for very small screens */
+  .db-editor .top-banner h1 {
+    font-size: 24px; /* Further adjust font size for very small screens */
   }
 }
 
@@ -1199,7 +1181,12 @@ body.modal-open {
 }
 
 .submit-btn:hover {
-  background-color: hsla(258, 46%, 41%, 0.7) !important; /* Darker purple for hover state */
+  background-color: hsla(
+    258,
+    46%,
+    41%,
+    0.7
+  ) !important; /* Darker purple for hover state */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important; /* Increased shadow on hover */
 }
 
@@ -1207,7 +1194,6 @@ body.modal-open {
   background-color: #553898 !important; /* Even darker purple for focus state */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important; /* Increased shadow on focus */
 }
-
 
 /* FOOTER */
 
@@ -1220,10 +1206,10 @@ body.modal-open {
 .footer-container {
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   justify-content: center;
   height: 100%;
-  gap:20px;
+  gap: 20px;
 }
 
 .footer-container h2 {
@@ -1242,8 +1228,8 @@ body.modal-open {
   transition: 0.3s;
 }
 
-.footer-container .web-links .web-link-btn:hover{
-  color: #00CED1;
+.footer-container .web-links .web-link-btn:hover {
+  color: #00ced1;
 }
 
 .footer-container .social-links {
@@ -1261,6 +1247,6 @@ body.modal-open {
   transition: 0.3s;
 }
 
-.footer-container .social-links svg:hover{
-  color: #00CED1;
+.footer-container .social-links svg:hover {
+  color: #00ced1;
 }
