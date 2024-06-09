@@ -61,7 +61,7 @@ const SearchByLoc = () => {
       () => {
         navigate("/searchgymresults");
         scrollToTop();
-      } 
+      }
     );
   };
 
@@ -77,36 +77,36 @@ const SearchByLoc = () => {
   return (
     <>
       <div className="search">
-      <h1 className="text-search">Find a Gym</h1>
-      <div className="search-container">
-        <AutoComplete
-        className="custom-search-bar"
-          style={{
-            width: 300,
-          }}
-          options={options}
-          placeholder="Search Gym"
-          filterOption={(inputValue, option) =>
-            option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
-          }
-          onChange={(value) => {
-            setTargetLoc(value);
-          }}
-          optionHeight={4}
-          size="large"
-        />
-        <Button
-          type="primary"
-          className="search-button"
-          size="large"
-          icon={<SearchOutlined className="search-icon" />}
-          onClick={() => {
-            handleSearch();
-            scrollToTop();
-        }}
-        />
-      </div>
-        
+        <h1 className="text-search">Find a Gym</h1>
+        <div className="search-container">
+          <AutoComplete
+            className="custom-search-bar"
+            style={{
+              width: 300,
+            }}
+            options={options}
+            placeholder="Search Gym"
+            filterOption={(inputValue, option) =>
+              option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !==
+              -1
+            }
+            onChange={(value) => {
+              setTargetLoc(value.charAt(0).toUpperCase() + value.slice(1));
+            }}
+            optionHeight={4}
+            size="large"
+          />
+          <Button
+            type="primary"
+            className="search-button"
+            size="large"
+            icon={<SearchOutlined className="search-icon" />}
+            onClick={() => {
+              handleSearch();
+              scrollToTop();
+            }}
+          />
+        </div>
       </div>
       {/* {displayResults && <SearchLocResults results={results} />} */}
     </>

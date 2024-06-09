@@ -65,10 +65,13 @@ const SearchByEquipment = () => {
             options={options}
             placeholder="Search Equipment"
             filterOption={(inputValue, option) =>
-              option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+              option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !==
+              -1
             }
             onChange={(value) => {
-              setTargetEquipment(value);
+              setTargetEquipment(
+                value.charAt(0).toUpperCase() + value.slice(1)
+              );
             }}
             optionHeight={4}
             size="large"
