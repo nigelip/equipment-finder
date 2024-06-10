@@ -16,7 +16,7 @@ const AppFooter = () => {
           <Link to="/" onClick={scrollToTop} className='web-link-btn'>Home</Link>
           <Link to="/searchequipment" onClick={scrollToTop} className='web-link-btn'>Equipment</Link>
           <Link to="/searchgym" onClick={scrollToTop} className='web-link-btn'>Gym</Link>
-          <Link to="/" onClick={scrollToTop} className='web-link-btn'>Contribute</Link>      
+          <a href="https://forms.gle/EoThqvGCdCyKQgtP9" target="_blank" className='web-link-btn'>Contribute</a>
         </div>
         <div className='social-links'>
           {/* <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a> */}
