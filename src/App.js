@@ -12,38 +12,48 @@ import { AuthContextProvider } from "./context/AuthContext.js";
 import Login from "./Components/Login.js";
 import Protected from "./Components/Protected.js";
 import NotFound from "./Components/NotFound.js";
+import DataProvider from "./context/DataProvider.js";
+import Catalogue from "./Components/Catalogue.js";
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <AuthContextProvider>
-          <NavBar />
-          <div className="content-wrap">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/equipment-finder" element={<Home />} />
-              <Route path="/loginPage" element={<Login />} />
-              <Route path="/searchequipment" element={<SearchByEquipment />} />
-              <Route
-                path="/searchequipmentresults"
-                element={<SearchEquipmentResults />}
-              />
-              <Route path="/searchgym" element={<SearchByLoc />} />
-              <Route path="/searchgymresults" element={<SearchLocResults />} />
-              <Route
-                path="/DBEditor"
-                element={
-                  <Protected>
-                    <DBEditor />
-                  </Protected>
-                }
-              />
-              <Route path="*" element={<NotFound />}/>
-            </Routes>
-          </div>
-        </AuthContextProvider>
-
+        <DataProvider>
+          <AuthContextProvider>
+            <NavBar />
+            <div className="content-wrap">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/equipment-finder" element={<Home />} />
+                <Route path="/loginPage" element={<Login />} />
+                <Route
+                  path="/searchequipment"
+                  element={<SearchByEquipment />}
+                />
+                <Route
+                  path="/searchequipmentresults"
+                  element={<SearchEquipmentResults />}
+                />
+                <Route path="/searchgym" element={<SearchByLoc />} />
+                <Route
+                  path="/searchgymresults"
+                  element={<SearchLocResults />}
+                />
+                <Route
+                  path="/DBEditor"
+                  element={
+                    <Protected>
+                      <DBEditor />
+                    </Protected>
+                  }
+                />
+                <Route path="/equipmentCatalogue" element={<Catalogue />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </div>
+          </AuthContextProvider>
+        </DataProvider>
         <AppFooter />
       </div>
     </Router>
