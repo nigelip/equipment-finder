@@ -17,7 +17,7 @@ const SearchLocResults = () => {
   useEffect(() => {
     const q = query(
       colRef,
-      where("location", "==", sessionStorage.getItem("locresult"))
+      where("location", "==", localStorage.getItem("locresult"))
     );
     const unsub = onSnapshot(q, (querySnapshot) => {
       const backItems = [];
@@ -65,18 +65,16 @@ const SearchLocResults = () => {
   return (
     <div>
       <div className="location-header">
-        <h1>
-          {sessionStorage.getItem("locresult")}
-        </h1>
+        <h1>{localStorage.getItem("locresult")}</h1>
       </div>
-        <ResultBoxTest title="Back" results={backResults} />
-        <ResultBoxTest title="Chest" results={chestResults} />
-        <ResultBoxTest title="Legs" results={legsResults} />
-        <ResultBoxTest title="Arms" results={armsResults} />
-        <ResultBoxTest title="Glutes" results={glutesResults} />
-        <ResultBoxTest title="Multipurpose" results={multipurposeResults} />
-        <ResultBoxTest title="Shoulders" results={shouldersResults} />
-        <ResultBoxTest title="Core" results={coreResults} />
+      <ResultBoxTest title="Back" results={backResults} />
+      <ResultBoxTest title="Chest" results={chestResults} />
+      <ResultBoxTest title="Legs" results={legsResults} />
+      <ResultBoxTest title="Arms" results={armsResults} />
+      <ResultBoxTest title="Glutes" results={glutesResults} />
+      <ResultBoxTest title="Multipurpose" results={multipurposeResults} />
+      <ResultBoxTest title="Shoulders" results={shouldersResults} />
+      <ResultBoxTest title="Core" results={coreResults} />
     </div>
   );
 };

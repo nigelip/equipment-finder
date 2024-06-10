@@ -31,7 +31,7 @@ const SearchByEquipment = () => {
       return navigate("/searchequipment");
     }
 
-    sessionStorage.setItem("equipmentresult", targetEquipment);
+    localStorage.setItem("equipmentresult", targetEquipment);
 
     message.success(
       "Search successful! Redirecting to search results page...",

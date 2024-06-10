@@ -53,7 +53,7 @@ const SearchByLoc = () => {
       return navigate("/searchgym");
     }
 
-    sessionStorage.setItem("locresult", targetLoc);
+    localStorage.setItem("locresult", targetLoc);
 
     message.success(
       "Search successful! Redirecting to search results page...",

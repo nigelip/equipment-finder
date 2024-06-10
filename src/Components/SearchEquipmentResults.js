@@ -22,7 +22,7 @@ const SearchEquipmentResults = () => {
   const navigate = new useNavigate();
 
   const onClick = () => {
-    sessionStorage.setItem("locresult", currentEquipment.location);
+    localStorage.setItem("locresult", currentEquipment.location);
 
     message.success(
       "Search successful! Redirecting to search results page...",
@@ -54,7 +54,7 @@ const SearchEquipmentResults = () => {
   useEffect(() => {
     const q = query(
       colRef,
-      where("name", "==", sessionStorage.getItem("equipmentresult"))
+      where("name", "==", localStorage.getItem("equipmentresult"))
     );
     const unsub = onSnapshot(q, (querySnapshot) => {
       const items = [];
@@ -103,7 +103,7 @@ const SearchEquipmentResults = () => {
   return (
     <div>
       <div className="equipment-header">
-        <h1>{sessionStorage.getItem("equipmentresult")}</h1>
+        <h1>{localStorage.getItem("equipmentresult")}</h1>
       </div>
       <div className="result-box-equip-overall">
         <div className="resultBox">
