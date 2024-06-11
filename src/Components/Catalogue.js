@@ -1,91 +1,106 @@
 import React, { useContext, useMemo, useEffect, useState } from "react";
-import DataContext from "../context/DataContext";
+import { db } from "../firebase";
+import { collection, onSnapshot } from "firebase/firestore";
 import { storage } from "../firebase";
 import { getDownloadURL, ref } from "firebase/storage";
 
 const Catalogue = () => {
-  const { data } = useContext(DataContext);
+  const [uniqueData, setUniqueData] = useState([]);
   const [fetchedResults, setFetchedResults] = useState([]);
-  // Use useMemo to memoize the filtered data
-  const uniqueData = useMemo(() => {
-    return data.reduce((acc, current) => {
-      const x = acc.find(
-        (item) =>
-          item.name === current.name &&
-          item.brand === current.brand &&
-          item.type === current.type
-      );
-      if (!x) {
-        return acc.concat([current]);
-      } else {
-        return acc;
-      }
-    }, []);
-  }, [data]);
 
-  // Group data by brand
-  const groupedByTarget = useMemo(() => {
-    return uniqueData.reduce((acc, current) => {
-      if (!acc[current.target]) {
-        acc[current.target] = [];
-      }
-      acc[current.target].push(current);
-      return acc;
-    }, {});
-  }, [uniqueData]);
+  useEffect(() => {
+    const unsub = onSnapshot(collection(db, "equipment"), (snapshot) => {
+      let uniqueItems = {};
+      snapshot.forEach((doc) => {
+        const { name, type, brand, target } = doc.data();
+        const key = `${name}_${type}_${brand}_${target}`;
+        if (!uniqueItems[key]) {
+          uniqueItems[key] = { id: doc.id, name, type, brand, target };
+        }
+      });
+      const uniqueDataArray = Object.values(uniqueItems);
+      setUniqueData(uniqueDataArray);
+    });
+    return () => unsub();
+  }, []); // Empty dependency array to run effect only once on component mount
+
+  // useEffect(() => {
+  //   const fetchUrls = async () => {
+  //     const updatedResults = await Promise.all(
+  //       uniqueData.map(async (item) => {
+  //         try {
+  //           const url = await getDownloadURL(
+  //             ref(
+  //               storage,
+  //               item.brand + " " + item.type + " " + item.name + ".png"
+  //             )
+  //           );
+  //           return { ...item, url };
+  //         } catch (error) {
+  //           return { ...item, url: "https://via.placeholder.com/200" };
+  //         }
+  //       })
+  //     );
+  //     setFetchedResults(updatedResults);
+  //     console.log(updatedResults);
+  //   };
+
+  //   fetchUrls();
+  // }, [uniqueData]);
 
   useEffect(() => {
     const fetchUrls = async () => {
-      const updatedResults = await Promise.all(
+      const groupedResults = {}; // Object to store grouped results
+
+      await Promise.all(
         uniqueData.map(async (item) => {
           try {
             const url = await getDownloadURL(
-              ref(
-                storage,
-                item.brand + " " + item.type + " " + item.name + ".png"
-              )
+              ref(storage, `${item.brand} ${item.type} ${item.name}.png`)
             );
-            return { ...item, url };
+            // If the brand key doesn't exist in groupedResults, create it with an empty array
+            if (!groupedResults[item.target]) {
+              groupedResults[item.target] = [];
+            }
+            // Push the item with its URL to the array corresponding to its brand
+            groupedResults[item.target].push({ ...item, url });
           } catch (error) {
-            return { ...item, url: "https://via.placeholder.com/200" };
+            // If there's an error fetching the URL, use a placeholder image
+            if (!groupedResults[item.target]) {
+              groupedResults[item.target] = [];
+            }
+            groupedResults[item.target].push({
+              ...item,
+              url: "https://via.placeholder.com/200",
+            });
           }
         })
       );
-      setFetchedResults(updatedResults);
+
+      setFetchedResults(groupedResults);
+      console.log(groupedResults);
     };
 
     fetchUrls();
-  }, []);
-
-  // Group fetched results by target
-  const groupedFetchedResults = useMemo(() => {
-    return fetchedResults.reduce((acc, current) => {
-      if (!acc[current.target]) {
-        acc[current.target] = [];
-      }
-      acc[current.target].push(current);
-      return acc;
-    }, {});
-  }, [fetchedResults]);
+  }, [uniqueData]);
 
   return (
     <div>
-      {Object.keys(groupedFetchedResults).map((target) => (
+      {Object.keys(fetchedResults).map((target) => (
         <div key={target}>
           <h2>{target}</h2>
-          {groupedFetchedResults[target].map((item) => (
-            <div key={item.id}>
-              <img
-                src={item.url}
-                alt={`${item.name}`}
-                width={200}
-                height={200}
-              />
-              <p>{item.name}</p>
-              <p>Brand: {item.brand}</p>
-              <p>type: {item.type}</p>
-            </div>
-          ))}
+          <ul>
+            {fetchedResults[target].map((item, index) => (
+              <li key={index}>
+                Name: {item.name}, Type: {item.type}, Brand: {item.brand}
+                <img
+                  src={item.url}
+                  alt={item.name}
+                  style={{ maxWidth: "200px", maxHeight: "200px" }}
+                />
+              </li>
+            ))}
+          </ul>
         </div>
       ))}
     </div>
