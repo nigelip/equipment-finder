@@ -365,7 +365,7 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
 }
 
 .result-box-overall {
-  padding: 10px;
+  /* padding: 10px; */
   background-color: #f9f9f9;
   margin-top: 12px;
   margin-bottom: 12px;
@@ -373,17 +373,17 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
 
 .resultBox,
 .catalogue-container {
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
   margin: 24px auto;
   border: none;
-  border-radius: 10px;
-  padding: 20px;
+  /* padding: 20px; */
   background-color: transparent;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .resultBox h1,
@@ -401,13 +401,12 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 80px;
-  max-width: 1400px;
+  gap: 40px;
 }
 
 .card {
-  flex: 1 1 250px;
-  max-width: 250px;
+  /* flex: 1 1 250px; */
+  max-width: 200px;
   margin: 4px;
   background-color: transparent;
   border: none;
@@ -445,6 +444,11 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
   transform: translateY(0);
 }
 
+.card-link {
+  text-decoration: none;
+}
+
+
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
   .resultBox h1 {
@@ -456,6 +460,23 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
   .resultBox h1 {
     font-size: 30px;
   }
+  .card {
+    max-width: 160px;
+  }
+  .card-img {
+    width: 160px;
+    height: 160px;
+  }
+  .card h2 {
+    font-size: 16px;
+  }
+  .card h3 {
+    font-size: 12px;
+  }
+  .cards-container {
+    gap: 0px;
+  }
+
 }
 
 /* Gym Results Page (SearchLocResults) */
