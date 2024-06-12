@@ -5,7 +5,6 @@ import { getDownloadURL, ref } from "firebase/storage";
 const ResultBox = (props) => {
   const { title, results } = props;
   const [fetchedResults, setFetchedResults] = useState([]);
-  // const titleRef = useRef(null);
   const cardsContainerRef = useRef(null);
 
   useEffect(() => {
@@ -67,14 +66,16 @@ const ResultBox = (props) => {
           <h1>{title}</h1>
           <div className="cards-container" ref={cardsContainerRef}>
             {fetchedResults.map((item, index) => (
-              <div key={index} className="card">
-                <img src={item.url} alt={item.name} className="card-img" />
-                <div className="card-details">
-                <h2>{item.name}</h2>
-                <h3>{item.type}</h3>
-                <h3>{item.brand}</h3>
+              <a key={index} href="/searchequipment" className="card-link">
+                <div className="card">
+                  <img src={item.url} alt={item.name} className="card-img" />
+                  <div className="card-details">
+                    <h2>{item.name}</h2>
+                    <h3>{item.type}</h3>
+                    <h3>{item.brand}</h3>
+                  </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
