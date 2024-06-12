@@ -61,6 +61,9 @@ const NavBar = () => {
             Add Data
           </Link>
         )}
+        <Link to="/equipmentCatalogue" className="link-btn" onClick={() => { closeMenu(); scrollToTop(); }}>
+          Catalogue
+        </Link>
         <Link to="/searchequipment" className="link-btn" onClick={() => { closeMenu(); scrollToTop(); }}>
           Equipment
         </Link>
