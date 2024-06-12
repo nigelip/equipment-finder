@@ -2,13 +2,14 @@ import { React, useEffect, useState, useRef } from "react";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
 import { Link } from "react-router-dom";
+import Carousel from './Carousel';
 
 const Home = () => {
   const [equipment, setEquipment] = useState([]);
   const heroItemsRef = useRef([]);
   const exclusivelyItemsRef = useRef([]);
   const statsItemsRef = useRef([]);
-
+  const carouselRef = useRef(null);
 
   useEffect(() => {
     const equipmentList = [];
@@ -38,6 +39,7 @@ const Home = () => {
       ...heroItemsRef.current,
       ...exclusivelyItemsRef.current,
       ...statsItemsRef.current,
+      carouselRef.current
     ];
 
     allItems.forEach(item => {
@@ -100,22 +102,25 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="stats">
-        <div className="home-stats">
-          <div className="gym-stats" ref={el => statsItemsRef.current[0] = el}>
-            <h1>
-              <span id="count">{option.size}</span> Gyms available
-            </h1>
-            <p>Find out what equipment these gyms have!</p>
-          </div>
-          <div className="equip-stats" ref={el => statsItemsRef.current[1] = el}>
-            <h1>
-              <span id="count">83</span> Equipment available
-            </h1>
-            <p>Browse through the extensive list of equipment!</p>
-          </div>
-        </div>
+      <section id="find-your-gym">
+        <h1>FIND YOUR GYM</h1>
+        <Carousel ref={carouselRef} />
+        <p>
+          <span id="count">{option.size} </span>
+          GYMS AVAILABLE
+          </p>
+        <Link to="/searchgym" className="search-gym-btn" onClick={scrollToTop}>
+              Search Gym
+          </Link>
       </section>
+
+      <section id="find-your-equipment">
+        <h1>FIND YOUR EQUIPMENT</h1>
+        
+      </section>
+      
+      
+
     </div>
   );
 };
