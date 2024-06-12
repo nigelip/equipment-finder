@@ -22,6 +22,46 @@ body {
   --padding-btn: 12px 24px;
 }
 
+@media (max-width: 1200px) {
+  :root {
+    --font-size-h1: 4.5rem;
+    --font-size-brand: 5.5rem;
+    --font-size-p: 1.8rem;
+    --font-size-btn: 1.8rem;
+    --padding-btn: 12px 24px;
+  }
+}
+
+@media (max-width: 992px) {
+  :root {
+    --font-size-h1: 4rem;
+    --font-size-brand: 5rem;
+    --font-size-p: 1.5rem;
+    --font-size-btn: 1.5rem;
+    --padding-btn: 10px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-h1: 3.5rem;
+    --font-size-brand: 4.5rem;
+    --font-size-p: 1.3rem;
+    --font-size-btn: 1.3rem;
+    --padding-btn: 8px 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --font-size-h1: 3rem;
+    --font-size-brand: 4rem;
+    --font-size-p: 1.1rem;
+    --font-size-btn: 1.1rem;
+    --padding-btn: 7px 14px;
+  }
+}
+
 ::selection {
   background: hsla(181, 100%, 41%, 0.551);
 }
@@ -1000,85 +1040,45 @@ body.modal-open {
   color: #553898;
 }
 
-#stats {
-  height: 100vh; /* Full viewport height */
-  overflow: hidden;
-  /* background: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%); */
+#find-your-gym {
+  height: 100vh;
   background-color: #f9f9f9;
-  /* background-color: #f1f1f1; */
   align-items: center;
   display: flex;
   justify-content: center;
-}
-
-.home .home-stats {
-  display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 100px 20px; /* Increased padding */
-  gap: 50px;
 }
 
-.home .home-stats h1 {
+#find-your-gym h1 {
+  font-size: var(--font-size-h1);
+  color: #553898;
+  font-weight: bold;
+}
+
+#find-your-gym p {
   color: #888;
 }
 
-.home .home-stats .gym-stats,
-.home .home-stats .equip-stats {
-  background-color: transparent;
-  color: white;
-  padding: 30px 50px;
-  border-radius: 40px;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-  transition: all 0.3s ease;
-}
-
-.home .home-stats #count {
-  font-weight: 800;
+#find-your-gym #count {
   color: #00ced1;
 }
 
-/* Responsive Design */
-
-@media (max-width: 1200px) {
-  :root {
-    --font-size-h1: 4.5rem;
-    --font-size-brand: 5.5rem;
-    --font-size-p: 1.8rem;
-    --font-size-btn: 1.8rem;
-    --padding-btn: 12px 24px;
-  }
+#find-your-gym .search-gym-btn {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  padding: var(--padding-btn);
+  border: none;
+  border-radius: 20px;
+  font-size: var(--font-size-btn);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  background-color: #553898;
+  color: #f1f1f2;
 }
 
-@media (max-width: 992px) {
-  :root {
-    --font-size-h1: 4rem;
-    --font-size-brand: 5rem;
-    --font-size-p: 1.5rem;
-    --font-size-btn: 1.5rem;
-    --padding-btn: 10px 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  :root {
-    --font-size-h1: 3.5rem;
-    --font-size-brand: 4.5rem;
-    --font-size-p: 1.3rem;
-    --font-size-btn: 1.3rem;
-    --padding-btn: 8px 16px;
-  }
-}
-
-@media (max-width: 576px) {
-  :root {
-    --font-size-h1: 3rem;
-    --font-size-brand: 4rem;
-    --font-size-p: 1.1rem;
-    --font-size-btn: 1.1rem;
-    --padding-btn: 7px 14px;
-  }
+#find-your-gym .search-gym-btn:hover {
+  background-color: #55389898;
 }
 
 /* Login */
@@ -1340,5 +1340,51 @@ body.modal-open {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+/* carousel */
+
+.carousel {
+  display: flex;
+  justify-content: center;
+}
+
+.text-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1200px; /* Adjust the width according to your design */
+  height: 200px; /* Adjust the height according to your design */
+  gap: 8px;
+}
+
+.text-wrapper > div {
+  width: 400px; /* Adjust the width according to your design */
+  text-align: center;
+  font-size: 28px;
+  opacity: 0.5;
+  color: #333; /* Dark grey color */
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+.current {
+  /* max-width: 400px !important; */
+  text-wrap: wrap;
+  opacity: 1 !important;
+  font-size: 40px !important;
+  transform: scale(1.2) translateY(0);
+  font-weight: bold;
+  color: #00ced1 !important;
+  line-height: 1;
+}
+
+.prev, .next {
+  transform: scale(0.8) translateY(20%);
+}
+
+@media (max-width: 480px) {
+  .current {
+    font-size: 32px !important;
   }
 }
