@@ -1,132 +1,55 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { collection, onSnapshot } from "firebase/firestore";
-import { storage } from "../firebase";
-import { getDownloadURL, ref } from "firebase/storage";
 import ResultBox from "./ResultBox";
-import LoadingAnimation from "./LoadingAnimation"; // Import your loading animation component
 
 const Catalogue = () => {
-  const [backResults, setBackResults] = useState([]);
-  const [legsResults, setLegsResults] = useState([]);
-  const [chestResults, setChestResults] = useState([]);
-  const [armsResults, setArmsResults] = useState([]);
-  const [glutesResults, setGlutesResults] = useState([]);
-  const [multipurposeResults, setMultipurposeResults] = useState([]);
-  const [shouldersResults, setShouldersResults] = useState([]);
-  const [coreResults, setCoreResults] = useState([]);
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [groupedData, setGroupedData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const snapshot = await new Promise((resolve) => {
-        const unsub = onSnapshot(collection(db, "equipment"), (snapshot) => {
-          resolve(snapshot);
-          unsub(); // Unsubscribe after getting the snapshot
-        });
-      });
-
-      const uniqueItems = {};
-      const backItems = [];
-      const legsItems = [];
-      const chestItems = [];
-      const armsItems = [];
-      const glutesItems = [];
-      const multipurposeItems = [];
-      const shouldersItems = [];
-      const coreItems = [];
-
-      await Promise.all(snapshot.docs.map(async (doc) => {
-        const item = doc.data();
-        const key = `${item.name}_${item.type}_${item.brand}_${item.target}`;
+    const unsub = onSnapshot(collection(db, "equipment"), (snapshot) => {
+      let uniqueItems = {};
+      const groupedResults = {};
+      snapshot.forEach((doc) => {
+        const { name, type, brand, target } = doc.data();
+        const key = `${name}_${type}_${brand}_${target}`;
         if (!uniqueItems[key]) {
-          uniqueItems[key] = true;
-          try {
-            const url = await getDownloadURL(
-              ref(storage, `${item.brand} ${item.type} ${item.name}.png`)
-            );
-            item.url = url;
-          } catch (error) {
-            item.url = "https://via.placeholder.com/200";
-          }
-
-          switch (item.target) {
-            case "Back":
-              backItems.push(item);
-              break;
-            case "Legs":
-              legsItems.push(item);
-              break;
-            case "Chest":
-              chestItems.push(item);
-              break;
-            case "Arms":
-              armsItems.push(item);
-              break;
-            case "Glutes":
-              glutesItems.push(item);
-              break;
-            case "Multipurpose":
-              multipurposeItems.push(item);
-              break;
-            case "Shoulders":
-              shouldersItems.push(item);
-              break;
-            case "Core":
-              coreItems.push(item);
-              break;
-            default:
-              break;
-          }
+          uniqueItems[key] = { id: doc.id, name, type, brand, target };
         }
-      }));
+      });
+      const uniqueDataArray = Object.values(uniqueItems);
+      uniqueDataArray.forEach((item) => {
+        if (!groupedResults[item.target]) {
+          groupedResults[item.target] = [];
+        }
+        groupedResults[item.target].push({ ...item });
+      });
+      setGroupedData(groupedResults);
+    });
+    return () => unsub();
+  }, []); // Empty dependency array to run effect only once on component mount
 
-      setBackResults(backItems);
-      setLegsResults(legsItems);
-      setChestResults(chestItems);
-      setArmsResults(armsItems);
-      setGlutesResults(glutesItems);
-      setMultipurposeResults(multipurposeItems);
-      setShouldersResults(shouldersItems);
-      setCoreResults(coreItems);
-    };
-
-    const loadWithDelay = async () => {
-
-      window.scrollTo(0, 0);
-
-      setLoading(true);
-      const MIN_LOADING_TIME = 500; // Minimum loading time in milliseconds
-
-      const fetchDataPromise = fetchData();
-      const delayPromise = new Promise(resolve => setTimeout(resolve, MIN_LOADING_TIME));
-
-      await Promise.all([fetchDataPromise, delayPromise]);
-      setLoading(false);
-
-      // Scroll to the top of the page
-      
-    };
-
-    loadWithDelay();
-  }, []);
+  // Define the desired order of targets
+  const targetOrder = [
+    "Chest",
+    "Back",
+    "Arms",
+    "Shoulders",
+    "Legs",
+    "Glutes",
+    "Core",
+    "Multipurpose",
+  ];
 
   return (
     <div>
-      {loading ? (
-        <LoadingAnimation /> // Show loading animation while loading
-      ) : (
-        <>
-          <ResultBox title="Back" results={backResults} />
-          <ResultBox title="Chest" results={chestResults} />
-          <ResultBox title="Legs" results={legsResults} />
-          <ResultBox title="Arms" results={armsResults} />
-          <ResultBox title="Glutes" results={glutesResults} />
-          <ResultBox title="Multipurpose" results={multipurposeResults} />
-          <ResultBox title="Shoulders" results={shouldersResults} />
-          <ResultBox title="Core" results={coreResults} />
-        </>
-      )}
+      {targetOrder.map((target) => (
+        <div key={target}>
+          {groupedData[target] && (
+            <ResultBox title={target} results={groupedData[target]} />
+          )}
+        </div>
+      ))}
     </div>
   );
 };

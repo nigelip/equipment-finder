@@ -4,15 +4,7 @@ import { query, where, collection, onSnapshot } from "firebase/firestore";
 import ResultBox from "./ResultBox";
 
 const SearchLocResults = () => {
-  const [backResults, setBackResults] = useState([]);
-  const [legsResults, setLegsResults] = useState([]);
-  const [chestResults, setChestResults] = useState([]);
-  const [armsResults, setArmsResults] = useState([]);
-  const [glutesResults, setGlutesResults] = useState([]);
-  const [multipurposeResults, setMultipurposeResults] = useState([]);
-  const [shouldersResults, setShouldersResults] = useState([]);
-  const [coreResults, setCoreResults] = useState([]);
-
+  const [groupedData, setGroupedData] = useState([]);
   const colRef = collection(db, "equipment");
   useEffect(() => {
     const q = query(
@@ -20,61 +12,52 @@ const SearchLocResults = () => {
       where("location", "==", localStorage.getItem("locresult"))
     );
     const unsub = onSnapshot(q, (querySnapshot) => {
-      const backItems = [];
-      const legsItems = [];
-      const chestItems = [];
-      const armsItems = [];
-      const glutesItems = [];
-      const multipurposeItems = [];
-      const shouldersItems = [];
-      const coreItems = [];
-
+      let uniqueItems = {};
+      const groupedResults = {};
       querySnapshot.forEach((doc) => {
-        if (doc.data().target === "Back") {
-          backItems.push(doc.data());
-        } else if (doc.data().target === "Legs") {
-          legsItems.push(doc.data());
-        } else if (doc.data().target === "Chest") {
-          chestItems.push(doc.data());
-        } else if (doc.data().target === "Arms") {
-          armsItems.push(doc.data());
-        } else if (doc.data().target === "Glutes") {
-          glutesItems.push(doc.data());
-        } else if (doc.data().target === "Multipurpose") {
-          multipurposeItems.push(doc.data());
-        } else if (doc.data().target === "Shoulders") {
-          shouldersItems.push(doc.data());
-        } else if (doc.data().target === "Core") {
-          coreItems.push(doc.data());
+        const { name, type, brand, target } = doc.data();
+        const key = `${name}_${type}_${brand}_${target}`;
+        if (!uniqueItems[key]) {
+          uniqueItems[key] = { id: doc.id, name, type, brand, target };
         }
       });
-      setBackResults(backItems);
-      setLegsResults(legsItems);
-      setChestResults(chestItems);
-      setArmsResults(armsItems);
-      setGlutesResults(glutesItems);
-      setMultipurposeResults(multipurposeItems);
-      setShouldersResults(shouldersItems);
-      setCoreResults(coreItems);
+      const uniqueDataArray = Object.values(uniqueItems);
+      uniqueDataArray.forEach((item) => {
+        if (!groupedResults[item.target]) {
+          groupedResults[item.target] = [];
+        }
+        groupedResults[item.target].push({ ...item });
+      });
+      setGroupedData(groupedResults);
     });
     return () => {
       unsub();
     };
   }, []);
+  // Define the desired order of targets
+  const targetOrder = [
+    "Chest",
+    "Back",
+    "Arms",
+    "Shoulders",
+    "Legs",
+    "Glutes",
+    "Core",
+    "Multipurpose",
+  ];
 
   return (
     <div>
       <div className="location-header">
         <h1>{localStorage.getItem("locresult")}</h1>
       </div>
-      <ResultBox title="Back" results={backResults} />
-      <ResultBox title="Chest" results={chestResults} />
-      <ResultBox title="Legs" results={legsResults} />
-      <ResultBox title="Arms" results={armsResults} />
-      <ResultBox title="Glutes" results={glutesResults} />
-      <ResultBox title="Multipurpose" results={multipurposeResults} />
-      <ResultBox title="Shoulders" results={shouldersResults} />
-      <ResultBox title="Core" results={coreResults} />
+      {targetOrder.map((target) => (
+        <div key={target}>
+          {groupedData[target] && (
+            <ResultBox title={target} results={groupedData[target]} />
+          )}
+        </div>
+      ))}
     </div>
   );
 };
