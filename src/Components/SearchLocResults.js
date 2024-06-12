@@ -44,6 +44,7 @@ const SearchLocResults = () => {
     "Glutes",
     "Core",
     "Multipurpose",
+    "Cardio",
   ];
 
   return (

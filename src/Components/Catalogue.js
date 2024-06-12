@@ -39,6 +39,7 @@ const Catalogue = () => {
     "Glutes",
     "Core",
     "Multipurpose",
+    "Cardio",
   ];
 
   return (
