@@ -31,7 +31,9 @@ const SearchByEquipment = () => {
       return navigate("/searchequipment");
     }
 
-    localStorage.setItem("equipmentresult", targetEquipment);
+    localStorage.setItem("equipmentResult", targetEquipment);
+    localStorage.setItem("equipmentBrand", false);
+    localStorage.setItem("equipmentType", false);
 
     message.success(
       "Search successful! Redirecting to search results page...",

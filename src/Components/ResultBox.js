@@ -66,7 +66,16 @@ const ResultBox = (props) => {
           <h1>{title}</h1>
           <div className="cards-container" ref={cardsContainerRef}>
             {fetchedResults.map((item, index) => (
-              <a key={index} href="/searchequipment" className="card-link">
+              <a
+                key={index}
+                href="/searchequipmentresults"
+                className="card-link"
+                onClick={() => {
+                  localStorage.setItem("equipmentResult", item.name);
+                  localStorage.setItem("equipmentType", item.type);
+                  localStorage.setItem("equipmentBrand", item.brand);
+                }}
+              >
                 <div className="card">
                   <img src={item.url} alt={item.name} className="card-img" />
                   <div className="card-details">

@@ -18,9 +18,10 @@ const SearchEquipmentResults = () => {
   const [open, setOpen] = useState(false);
   const [results, setResults] = useState({});
   const [link, setLink] = useState("");
-  const colRef = collection(db, "equipment");
   const navigate = new useNavigate();
-
+  const equipmentName = localStorage.getItem("equipmentResult");
+  const equipmentBrand = localStorage.getItem("equipmentBrand");
+  const equipmentType = localStorage.getItem("equipmentType");
   const onClick = () => {
     localStorage.setItem("locresult", currentEquipment.location);
 
@@ -52,10 +53,22 @@ const SearchEquipmentResults = () => {
   };
 
   useEffect(() => {
-    const q = query(
-      colRef,
-      where("name", "==", localStorage.getItem("equipmentresult"))
-    );
+    const colRef = collection(db, "equipment");
+
+    let q;
+    if (equipmentBrand === "false") {
+      console.log("Using query without equipmentType filter", equipmentBrand);
+      q = query(colRef, where("name", "==", equipmentName));
+    } else {
+      console.log("Using query with equipmentType filter", equipmentBrand);
+      q = query(
+        colRef,
+        where("name", "==", equipmentName),
+        where("brand", "==", equipmentBrand),
+        where("type", "==", equipmentType)
+      );
+    }
+    console.log("Constructed Query:", q);
     const unsub = onSnapshot(q, (querySnapshot) => {
       const items = [];
       querySnapshot.forEach((doc) => {
@@ -103,7 +116,7 @@ const SearchEquipmentResults = () => {
   return (
     <div>
       <div className="equipment-header">
-        <h1>{localStorage.getItem("equipmentresult")}</h1>
+        <h1>{localStorage.getItem("equipmentResult")}</h1>
       </div>
       <div className="result-box-equip-overall">
         <div className="resultBox">
