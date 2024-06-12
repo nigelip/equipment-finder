@@ -70,8 +70,9 @@ const ResultBox = (props) => {
               <div key={index} className="card">
                 <img src={item.url} alt={item.name} className="card-img" />
                 <div className="card-details">
-                  <h2>{item.name}</h2>
-                  <h3>{item.brand}</h3>
+                <h2>{item.name}</h2>
+                <h3>{item.type}</h3>
+                <h3>{item.brand}</h3>
                 </div>
               </div>
             ))}

@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { db } from "../firebase";
 import { query, where, collection, onSnapshot } from "firebase/firestore";
-import ResultBoxTest from "./ResultBox";
+import ResultBox from "./ResultBox";
 
 const SearchLocResults = () => {
   const [backResults, setBackResults] = useState([]);
@@ -67,14 +67,14 @@ const SearchLocResults = () => {
       <div className="location-header">
         <h1>{localStorage.getItem("locresult")}</h1>
       </div>
-      <ResultBoxTest title="Back" results={backResults} />
-      <ResultBoxTest title="Chest" results={chestResults} />
-      <ResultBoxTest title="Legs" results={legsResults} />
-      <ResultBoxTest title="Arms" results={armsResults} />
-      <ResultBoxTest title="Glutes" results={glutesResults} />
-      <ResultBoxTest title="Multipurpose" results={multipurposeResults} />
-      <ResultBoxTest title="Shoulders" results={shouldersResults} />
-      <ResultBoxTest title="Core" results={coreResults} />
+      <ResultBox title="Back" results={backResults} />
+      <ResultBox title="Chest" results={chestResults} />
+      <ResultBox title="Legs" results={legsResults} />
+      <ResultBox title="Arms" results={armsResults} />
+      <ResultBox title="Glutes" results={glutesResults} />
+      <ResultBox title="Multipurpose" results={multipurposeResults} />
+      <ResultBox title="Shoulders" results={shouldersResults} />
+      <ResultBox title="Core" results={coreResults} />
     </div>
   );
 };
