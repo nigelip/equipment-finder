@@ -1,33 +1,15 @@
 import React, { useState, useEffect, forwardRef } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../firebase';
 
 const Carousel = forwardRef((props, ref) => {
-  const [texts, setTexts] = useState([]);
+  const [texts] = useState([
+    'Nanyang CC', 'City Square Mall', 'Punggol Oasis', 'Katong', 'City Hall',
+    'SKH Campus', 'Changi', 'Upper Serangoon', 'Bugis', 'Viio',
+    'Grantral Complex', 'Balestier', 'Pasir Panjang', 'Ang Mo Kio', 'Toa Payoh',
+    'Chai Chee', 'Tanjong Pagar', 'Kebun Bahru CC', 'Jurong Point', 'Hougang Central',
+    'Tampines', 'Keppel', 'Loyang Point', 'Serangoon Gardens', 'Bishan',
+    'Hougang CC', 'Kovan', 'NorthShore Plaza', 'Orchard'
+  ]);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
-
-  useEffect(() => {
-   
-    const fetchData = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "equipment"));
-        const locations = new Set();
-
-        querySnapshot.forEach((doc) => {
-          const data = doc.data();
-          if (data.location) {
-            locations.add(data.location);
-          }
-        });
-
-        setTexts(Array.from(locations));
-      } catch (error) {
-        console.error("Error fetching data from Firebase:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -36,10 +18,6 @@ const Carousel = forwardRef((props, ref) => {
 
     return () => clearInterval(interval);
   }, [texts.length]);
-
-  if (texts.length === 0) {
-    return <div>Loading...</div>; // Show a loading state while fetching data
-  }
 
   const prevTextIndex = (currentTextIndex - 1 + texts.length) % texts.length;
   const nextTextIndex = (currentTextIndex + 1) % texts.length;

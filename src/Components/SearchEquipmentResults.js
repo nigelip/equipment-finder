@@ -131,20 +131,13 @@ const SearchEquipmentResults = () => {
                   className="result-box-list"
                   dataSource={results[brand]}
                   renderItem={(target) => (
-                    <List.Item className="location-list-item">
+                    <List.Item className="location-list-item"
+                    onClick={() => showModal(target)}>
                       <div className="location-list-item-name">
                         <p>
                           <b id="location-name">{target.location}</b>
                         </p>
                       </div>
-
-                      <Button
-                        className="show-modal-btn"
-                        type="link"
-                        onClick={() => showModal(target)}
-                      >
-                        <FaInfoCircle />
-                      </Button>
                     </List.Item>
                   )}
                 />
