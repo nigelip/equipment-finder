@@ -596,6 +596,12 @@ background-image: linear-gradient(316deg, #7657ce 0%, #a594f9 5%);  */
   animation: fadeInModal 0.4s ease-in forwards;
 }
 
+.location-list-item:hover {
+  background-color: hsla(258, 46%, 41%, 0.2);
+  cursor: pointer;
+  transform: scale(1.5);
+}
+
 .brand-name-container {
   width:600px;
   display: flex;
@@ -1040,7 +1046,7 @@ body.modal-open {
   color: #553898;
 }
 
-#find-your-gym {
+#find-your-gym, #find-your-equipment {
   height: 100vh;
   background-color: #f9f9f9;
   align-items: center;
@@ -1049,7 +1055,7 @@ body.modal-open {
   flex-direction: column;
 }
 
-#find-your-gym h1 {
+#find-your-gym h1, #find-your-equipment h1 {
   font-size: var(--font-size-h1);
   color: #553898;
   font-weight: bold;
@@ -1063,7 +1069,9 @@ body.modal-open {
   color: #00ced1;
 }
 
-#find-your-gym .search-gym-btn {
+#find-your-gym .search-btn,
+#find-your-equipment .search-btn
+ {
   display: inline-block;
   text-align: center;
   cursor: pointer;
@@ -1077,7 +1085,8 @@ body.modal-open {
   color: #f1f1f2;
 }
 
-#find-your-gym .search-gym-btn:hover {
+#find-your-gym .search-btn:hover,
+#find-your-equipment .search-btn:hover {
   background-color: #55389898;
 }
 
@@ -1344,7 +1353,6 @@ body.modal-open {
 }
 
 /* carousel */
-
 .carousel {
   display: flex;
   justify-content: center;
@@ -1372,7 +1380,7 @@ body.modal-open {
   /* max-width: 400px !important; */
   text-wrap: wrap;
   opacity: 1 !important;
-  font-size: 40px !important;
+  font-size: 48px !important;
   transform: scale(1.2) translateY(0);
   font-weight: bold;
   color: #00ced1 !important;
@@ -1380,11 +1388,12 @@ body.modal-open {
 }
 
 .prev, .next {
-  transform: scale(0.8) translateY(20%);
+  transform: scale(0.8) translateY(40%);
 }
 
 @media (max-width: 480px) {
   .current {
-    font-size: 32px !important;
+    font-size: 40px !important;
   }
 }
+

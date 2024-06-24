@@ -3,7 +3,6 @@ import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
 import { Link } from "react-router-dom";
 import Carousel from './Carousel';
-
 const Home = () => {
   const [equipment, setEquipment] = useState([]);
   const heroItemsRef = useRef([]);
@@ -109,13 +108,17 @@ const Home = () => {
           <span id="count">{option.size} </span>
           GYMS AVAILABLE
           </p>
-        <Link to="/searchgym" className="search-gym-btn" onClick={scrollToTop}>
+        <Link to="/searchgym" className="search-btn" onClick={scrollToTop}>
               Search Gym
           </Link>
       </section>
 
       <section id="find-your-equipment">
         <h1>FIND YOUR EQUIPMENT</h1>
+        <p>Locate the gyms that carry the equipment you want!</p>
+        <Link to="/searchequipment" className="search-btn" onClick={scrollToTop}>
+              Search Equipment
+          </Link>
         
       </section>
       
